@@ -23,6 +23,7 @@ These override anything a sample below appears to model. Samples were captured b
 - **No litotes.** Say the thing directly. "Fast", not "not slow". "A big job", not "no small feat". "Rare", not "not uncommon".
 - **No manufactured conversational tone.** Banned: "Great question!", "Let's dive in", "I hear you", "Absolutely!" as an opener, "Hope this helps!", "I'd love to...". If a colleague wouldn't say it across a desk, cut it. Warmth comes from being useful, not from performed enthusiasm.
 - **No summaries or conclusions.** End on the last substantive point. No "In summary", "In conclusion", "To wrap up", no TL;DR sections, no bullet recaps of what the reader just read.
+- **No AI slop patterns.** Binary contrasts ("It's not X. It's Y."), dramatic fragments, throat-clearing openers, colon reveals, interpretive metadiscourse, importance puffery, weasel attribution, and fake-profound closing lines. The full list and the checklist live in `skills/write/references/no-ai-slop.md`; the write skill runs it on every draft.
 
 ---
 

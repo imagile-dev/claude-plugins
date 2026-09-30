@@ -22,7 +22,7 @@ Read `../../voice/STYLE-GUIDE.md` first.
 | **Technical** | Documentation, README, runbook, procedure, spec, ADR |
 | **Blog** | Blog post, LinkedIn article, thought leadership piece, tech essay |
 
-In every mode, the Universal Rules in the style guide apply: no em dashes, no litotes, no manufactured conversational tone, no summary or conclusion sections.
+In every mode, the Universal Rules in the style guide apply: no em dashes, no litotes, no manufactured conversational tone, no summary or conclusion sections. Every draft also gets the no-AI-slop pass in Step 4 before it is presented.
 
 If still unclear after reading context: **"What format is this — message, email, or post?"**
 
@@ -86,6 +86,8 @@ Target length: 500–650 words.
 
 ---
 
-## Step 4: Present and iterate
+## Step 4: No-slop pass, then present
+
+Before presenting, read `references/no-ai-slop.md` and run its checklist against the draft. Fix every pattern it catches (binary contrasts, dramatic fragments, throat-clearing, metadiscourse, puffery, weasel attribution, fake-profound kickers) with the minimum edit that keeps the voice. Re-run the checklist until it passes.
 
 Present the draft. Ask once: **"Good to go, or want changes?"** Then iterate.
