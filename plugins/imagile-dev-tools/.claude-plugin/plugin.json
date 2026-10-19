@@ -1,7 +1,7 @@
 {
   "name": "imagile-dev-tools",
-  "version": "1.4.0",
-  "description": "Imagile developer tools — AI image generation via the ChatGPT UI or the OpenAI Images API, and other team-specific utilities",
+  "version": "1.5.0",
+  "description": "Imagile developer tools — AI image generation via the ChatGPT UI or the OpenAI Images API, web image optimization, axe-core accessibility audits, and other team-specific utilities",
   "author": {
     "name": "kolatts"
   },
@@ -12,7 +12,11 @@
     "openai",
     "chatgpt",
     "image-generation",
-    "ai"
+    "ai",
+    "accessibility",
+    "a11y",
+    "wcag",
+    "axe-core"
   ],
   "skills": "./skills/"
 }

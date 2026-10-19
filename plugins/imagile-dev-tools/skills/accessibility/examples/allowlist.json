@@ -1,0 +1,4 @@
+[
+  { "rule": "region", "reason": "Fixture page has no landmarks on purpose; landmark checks are covered elsewhere." },
+  { "rule": "link-name", "html": "href=\"/somewhere\"", "theme": "neon-click", "reason": "Scoped example: one link, one theme. Owner and ticket go here (A11Y-123)." }
+]
