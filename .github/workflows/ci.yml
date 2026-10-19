@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  skills:
+    name: Skills and manifests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+
+      - name: YAML lint
+        run: uvx yamllint==1.37.1 --strict .
+
+      - name: Agent Skills spec (skills-ref)
+        run: |
+          for skill in plugins/*/skills/*/; do
+            uvx --from "git+https://github.com/agentskills/agentskills@69ef37e9424c0a7ea9dd2293b559e43ec8176379#subdirectory=skills-ref" \
+              skills-ref validate "$skill"
+          done
+
+      - name: Claude Code manifests (claude plugin validate --strict)
+        run: |
+          npx --yes @anthropic-ai/claude-code@2.1.289 plugin validate --strict .
+          for plugin in plugins/*/; do
+            npx --yes @anthropic-ai/claude-code@2.1.289 plugin validate --strict "$plugin"
+          done
+
+      - name: Repo policy
+        env:
+          BASE: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+        run: node scripts/check-skills.mjs ${BASE:+--base "$BASE"}
+
+  ci-ok:
+    name: CI ok
+    if: always()
+    needs: [skills]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every gate passed
+        env:
+          RESULT: ${{ needs.skills.result }}
+        run: test "$RESULT" = success

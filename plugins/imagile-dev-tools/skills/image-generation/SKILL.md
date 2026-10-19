@@ -1,11 +1,7 @@
 ---
-name: imagile-dev-tools:image-generation
-description: Generate or edit images from a text prompt — first through the ChatGPT UI at chatgpt.com when Claude in Chrome is connected, otherwise through the OpenAI Images API (gpt-image-2). Use when someone says generate an image, create an image, make a picture, AI image, text to image, draw me, render an illustration, generate a logo/icon/hero image/mockup/placeholder art, image from prompt, ChatGPT image, DALL-E, gpt-image, or asks to edit, inpaint, or restyle an existing image with a prompt. Also triggers for transparent-background asset generation and batch variations of a prompt.
+name: image-generation
+description: Generate or edit images from a prompt through ChatGPT in Chrome or the OpenAI Images API. Use for logos, icons, hero art, mockups, transparent assets or prompt edits.
 ---
-
-<!--
-allowed-tools: Bash, Read, Glob, AskUserQuestion, mcp__claude-in-chrome__*
--->
 
 Generate images from text prompts (and edit existing ones) by one of two routes: ChatGPT's own UI, driven through Claude in Chrome, or the OpenAI Images API. Both leave behind the same run folder, so the route is an implementation detail the user shouldn't have to think about. The bundled scripts are stdlib-only Python — no SDK, no `pip install`.
 

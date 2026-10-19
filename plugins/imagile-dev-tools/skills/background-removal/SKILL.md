@@ -1,11 +1,7 @@
 ---
-name: tools:background-removal
-description: Remove backgrounds from images locally with Python and rembg, producing transparent PNGs. Works fully offline (no API, no login) on a single image file or a whole folder of images. Use when someone says remove background, remove bg, background removal, rembg, cut out image, make transparent, transparent background, transparent png, cutout, isolate subject, product photo cutout, or wants a PNG with the background stripped. Triggers on either a single file or a batch folder.
+name: background-removal
+description: Remove image backgrounds offline with Python and rembg, for one file or a folder. Use for cutouts, transparent PNGs or removing a background.
 ---
-
-<!--
-allowed-tools: Bash, Read, Glob
--->
 
 Strip image backgrounds locally with Python + `rembg`, writing transparent PNGs. Runs offline (no API, no login) on a single file or a whole folder.
 

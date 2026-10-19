@@ -1,28 +1,26 @@
 {
-  "name": "kolatts-marketplace",
-  "version": "1.0.0",
-  "description": "Personal Claude Code plugin marketplace by kolatts",
-  "owner": { "name": "kolatts" },
-  "repository": "https://github.com/kolatts/claude-marketplace",
-  "keywords": ["workflow", "productivity", "writing", "communication", "azure", "infrastructure"],
+  "name": "imagile",
+  "owner": {
+    "name": "Imagile",
+    "email": "sunny@imagile.dev",
+    "url": "https://imagile.dev"
+  },
+  "metadata": {
+    "description": "Claude Code plugins from Imagile. Open source: use them, fork them, tell us what breaks.",
+    "version": "2.0.0"
+  },
   "plugins": [
-    {
-      "name": "sunny",
-      "source": "./plugins/sunny",
-      "description": "Personal developer workflow toolkit — commits, code review, scaffolding, architecture, and writing in your voice",
-      "keywords": ["workflow", "git", "writing", "scaffold", "review", "azure", "infrastructure"]
-    },
-    {
-      "name": "tools",
-      "source": "./plugins/tools",
-      "description": "General-purpose utility skills — standalone tools for image processing, file manipulation, and other everyday tasks",
-      "keywords": ["utilities", "images", "background-removal", "file-processing"]
-    },
     {
       "name": "imagile-dev-tools",
       "source": "./plugins/imagile-dev-tools",
-      "description": "Imagile developer tools — AI image generation via the ChatGPT UI or the OpenAI Images API, web image optimization, axe-core accessibility audits, and other team-specific utilities",
-      "keywords": ["imagile", "images", "openai", "chatgpt", "image-generation", "ai", "accessibility", "a11y", "wcag", "axe-core"]
+      "description": "Developer skills from Imagile: architecture, planning, commits and code review, plus accessibility audits, AI images, web image optimization and background removal",
+      "category": "development"
+    },
+    {
+      "name": "sunny",
+      "source": "./plugins/sunny",
+      "description": "Sunny Kolattukudy's personal skills: his voice for writing and bios, engineering philosophy, hiring, mentoring and default chat register",
+      "category": "productivity"
     }
   ]
 }

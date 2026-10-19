@@ -1,11 +1,11 @@
 {
-  "skill_name": "sunny:plan",
+  "skill_name": "imagile-dev-tools:plan",
   "evals": [
     {
       "id": 1,
       "eval_name": "oauth2-login-epic",
       "prompt": "Plan adding OAuth2 login to our app",
-      "expected_output": "Epic-sized plan with story stubs, multiple phases, files affected listed",
+      "expected_output": "Epic-sized plan with slices as sub-issues, vertical slices, files affected listed",
       "assertions": [
         {
           "id": "sized_as_epic",
@@ -15,21 +15,21 @@
         },
         {
           "id": "has_story_stubs",
-          "description": "Contains user story stubs (As a...)",
+          "description": "Epic is split into vertical slices tracked as sub-issues",
           "type": "regex",
-          "pattern": "(?i)As a .+, I want"
+          "pattern": "(?i)sub-issue"
         },
         {
           "id": "has_phases",
-          "description": "Plan is broken into multiple phases",
+          "description": "Plan lists numbered slices",
           "type": "regex",
-          "pattern": "(?i)Phase [12]"
+          "pattern": "(?i)(###\\s*[12]\\.|slice [12])"
         },
         {
           "id": "has_files_affected",
-          "description": "Lists files or areas affected",
+          "description": "Names the files or areas affected",
           "type": "regex",
-          "pattern": "(?i)(Files|Areas).{0,30}Affected"
+          "pattern": "(?i)files"
         }
       ]
     },
@@ -47,9 +47,9 @@
         },
         {
           "id": "has_verification",
-          "description": "Has a verification section",
+          "description": "States how the work is verified",
           "type": "regex",
-          "pattern": "(?i)Verification"
+          "pattern": "(?i)verif"
         },
         {
           "id": "user_visible_verification",
@@ -79,9 +79,9 @@
         },
         {
           "id": "has_files_affected",
-          "description": "Lists files or areas affected",
+          "description": "Names the files or areas affected",
           "type": "regex",
-          "pattern": "(?i)(Files|Areas).{0,30}Affected"
+          "pattern": "(?i)files"
         },
         {
           "id": "api_behavior_verification",
@@ -91,9 +91,9 @@
         },
         {
           "id": "has_goal",
-          "description": "Has a Goal section",
+          "description": "Issue has a Done when line",
           "type": "regex",
-          "pattern": "(?i)## Goal"
+          "pattern": "(?i)done when"
         }
       ]
     }

@@ -11,7 +11,7 @@ const pluginData = process.env.CLAUDE_PLUGIN_DATA;
 
 if (!pluginRoot || !pluginData) process.exit(0);
 
-const sourcePath = path.join(pluginRoot, 'CLAUDE.md');
+const sourcePath = path.join(pluginRoot, 'defaults', 'CLAUDE.md');
 const sentinelPath = path.join(pluginData, 'CLAUDE.md.sentinel');
 const globalClaudeMd = path.join(os.homedir(), '.claude', 'CLAUDE.md');
 
