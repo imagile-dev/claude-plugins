@@ -49,3 +49,4 @@ State the point, not the subject. "It's Fast" beats "Performance Considerations.
 - Every analogy must make the argument clearer, not just colorful. If strained, drop it
 - Mirror the rhythm: short declarative sentences, followed by a more developed thought, then move on
 - Don't pad to hit a word count. A tight 600-word post beats a bloated 1,200-word one
+- Run `no-ai-slop.md` on the finished draft. Blog posts attract the kicker line and the binary contrast more than any other mode; both go
