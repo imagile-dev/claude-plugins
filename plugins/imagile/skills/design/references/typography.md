@@ -10,9 +10,22 @@ Run this procedure every time. Do not reach for a list of approved fonts.
 2. Imagine the brand as a physical object, such as "a 1970s terminal manual" or "a field guide with a cloth cover".
 3. Write down the three fonts you would pick by reflex. Reject them.
 4. Browse a real catalog (Fontsource, Google Fonts, a foundry) for faces that fit the object.
-5. If your final pick matches one of the reflex fonts, start again.
+5. If your final pick matches one of the reflex fonts, or sits on the watch list below, start again.
+6. Show the two or three finalists in small side-by-side mockups with real content, and let the user pick.
 
-Rules for the pairing:
+## The watch list
+
+Last reviewed 2026-10. These faces are well made. They are also what generated design reaches for right now, so on a new project they read as a default rather than a choice. A new project uses one only when the brief states why this face and no other. A brand that already uses one keeps it.
+
+- **Sans:** Inter, Geist, DM Sans, Plus Jakarta Sans, Outfit, Satoshi, Manrope, Space Grotesk, Syne, Instrument Sans
+- **Serif:** Fraunces, Playfair Display, Cormorant, Newsreader, Lora, Crimson, DM Serif, Instrument Serif, Source Serif
+- **Mono:** Space Mono, JetBrains Mono and IBM Plex Mono when used as label decoration
+- **Families:** the IBM Plex superfamily as a whole-site default
+
+This list names what to avoid by reflex. It never names what to use instead, because every published list of approved replacements became the next list of tells. Review it every few months, and move a face off it when generated pages stop reaching for it.
+
+## Rules for the pairing
+
 
 - Use at most two families. One family in several weights often beats a timid display and body pair.
 - If you use two, make them clearly different. Never pair two similar faces, such as two geometric sans.
@@ -73,4 +86,4 @@ Light text looks heavier and tighter than dark text at the same settings. Compen
 - Preload only the body weight used above the fold.
 - Use a variable font when you need three or more weights.
 
-Sources: Impeccable (scale ratios, measure, dark-text compensation, the font procedure, loading), taste-skill (display at four times body, the two-line arithmetic, heading spacing, no weight change on hover), Emil Kowalski (tabular numbers, the ellipsis character, size-specific tracking), Anthropic `frontend-design` (at most two families, type as an active element).
+Sources: Impeccable (scale ratios, measure, dark-text compensation, the font procedure, the reflex-reject list behind the watch list, loading), taste-skill (display at four times body, the two-line arithmetic, heading spacing, no weight change on hover), Emil Kowalski (tabular numbers, the ellipsis character, size-specific tracking), Anthropic `frontend-design` (at most two families, type as an active element).

@@ -4,29 +4,37 @@
 # ///
 """Bookkeeping for image runs done through the ChatGPT UI instead of the API.
 
-Claude drives chatgpt.com with the Claude in Chrome browser tools; this script
-owns the two filesystem halves of that flow so a browser run leaves behind the
-same folder layout an API run does:
+Claude drives chatgpt.com through a browser tool (the desktop app's built-in
+browser, Claude in Chrome, or another signed-in browser); this script owns the
+two filesystem halves of that flow so a browser run leaves behind the same
+folder layout an API run does:
 
     prepare  make .claude/image-generation/YYMMDD-slug/, fold style.md into the
              prompt, write prompt.md, and print the exact text to paste
-    collect  move the downloaded image(s) out of the browser's download folder
+    collect  move the downloaded image(s) out of the browser's download folder,
+             or fetch them from the image links read off the page (--url),
              into that run folder and finish prompt.md
 
-Stdlib only — no SDK, no pip install, no network access. Run via uv (or plain
-python3; there are no dependencies):
+Stdlib only — no SDK, no pip install. The only network access is `collect
+--url`, which accepts ChatGPT and OpenAI image hosts and nothing else. Run via
+uv (or plain python3; there are no dependencies):
 
     uv run chatgpt_ui.py prepare "a red barn at golden hour" --slug barn
     uv run chatgpt_ui.py collect --run-dir .claude/image-generation/260814-barn
     uv run chatgpt_ui.py collect --run-dir .claude/image-generation/260814-barn ~/Downloads/barn.png
+    uv run chatgpt_ui.py collect --run-dir .claude/image-generation/260814-barn --url "https://chatgpt.com/backend-api/estuary/content?id=..."
 """
 import argparse
 import os
 import re
 import shutil
 import sys
+import tempfile
+import urllib.error
+import urllib.request
 from datetime import datetime
 from pathlib import Path
+from urllib.parse import urlparse
 
 # Shared with the API path so both routes write identical run folders.
 from generate_image import (
@@ -43,6 +51,10 @@ SOURCE = "chatgpt-ui"
 UI_MODEL = "gpt-image-2 (chatgpt.com)"
 IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp"}
 NOTHING_FOUND_EXIT = 3
+# Hosts ChatGPT serves generated images from. A link read off the page is only
+# fetched when it points here, so page content can't steer the script elsewhere.
+IMAGE_HOSTS = ("chatgpt.com", "openai.com", "oaiusercontent.com", "oaistatic.com")
+MAGIC = ((b"\x89PNG", ".png"), (b"\xff\xd8\xff", ".jpg"), (b"RIFF", ".webp"))
 # Keys write_manifest regenerates; carried values would end up duplicated.
 DERIVED_KEYS = {"generated", "outputs", "style_file", "edited_from"}
 
@@ -98,6 +110,55 @@ def recent_downloads(directory, count, after):
     return sorted(fresh[:count], key=lambda p: (p.stat().st_mtime, p.name))
 
 
+def allowed_host(url):
+    host = (urlparse(url).hostname or "").lower()
+    return urlparse(url).scheme == "https" and any(
+        host == h or host.endswith("." + h) for h in IMAGE_HOSTS
+    )
+
+
+def fetch_images(urls):
+    """Download image links read off the ChatGPT page into a temp folder."""
+    folder = Path(tempfile.mkdtemp(prefix="imagile-chatgpt-"))
+    fetched = []
+    for i, url in enumerate(urls, start=1):
+        if not allowed_host(url):
+            print(
+                f"Refusing {url[:80]}: only https links on {', '.join(IMAGE_HOSTS)} are fetched. "
+                "A blob: or data: link can't be fetched; use the image's download button.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+        request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 imagile-chatgpt-ui"})
+        try:
+            with urllib.request.urlopen(request, timeout=120) as response:
+                data = response.read()
+        except urllib.error.HTTPError as err:
+            print(
+                f"Fetching image {i} failed with HTTP {err.code}. The link likely needs the "
+                "browser's sign-in or has expired; use the image's download button instead.",
+                file=sys.stderr,
+            )
+            sys.exit(NOTHING_FOUND_EXIT)
+        except urllib.error.URLError as err:
+            print(f"Fetching image {i} failed: {err.reason}", file=sys.stderr)
+            sys.exit(NOTHING_FOUND_EXIT)
+        ext = next((e for magic, e in MAGIC if data.startswith(magic)), None)
+        if ext == ".webp" and data[8:12] != b"WEBP":
+            ext = None
+        if not ext:
+            print(
+                f"Image {i} isn't a PNG, JPEG or WebP (got {len(data)} bytes, starting "
+                f"{data[:16]!r}); the link probably returned a sign-in page.",
+                file=sys.stderr,
+            )
+            sys.exit(NOTHING_FOUND_EXIT)
+        path = folder / f"image-{i}{ext}"
+        path.write_bytes(data)
+        fetched.append(path)
+    return fetched
+
+
 def slug_for(directory):
     """rocket-icon, from a 260814-rocket-icon run folder."""
     return re.sub(r"^\d{6}-", "", directory.name) or "image"
@@ -148,7 +209,12 @@ def cmd_collect(args):
         sys.exit(1)
 
     meta, prompt = read_manifest(manifest)
-    if args.files:
+    if args.url and args.files:
+        print("Pass either file paths or --url, not both.", file=sys.stderr)
+        sys.exit(1)
+    if args.url:
+        sources = fetch_images(args.url)
+    elif args.files:
         sources = [Path(f).expanduser() for f in args.files]
         missing = [p for p in sources if not p.is_file()]
         if missing:
@@ -167,7 +233,7 @@ def cmd_collect(args):
 
     written = []
     for src, target in zip(sources, targets_for(directory, slug_for(directory), sources)):
-        if args.copy:
+        if args.copy and not args.url:
             shutil.copy2(src, target)
         else:
             shutil.move(str(src), str(target))
@@ -207,6 +273,8 @@ def main():
     coll.add_argument("-n", type=int, default=1, help="how many downloads to take (default 1)")
     coll.add_argument("--downloads-dir", help="where the browser saves files (default ~/Downloads)")
     coll.add_argument("--copy", action="store_true", help="copy instead of moving the download")
+    coll.add_argument("--url", action="append", default=[],
+                      help="fetch this image link read off the ChatGPT page instead of a download (repeatable)")
     coll.set_defaults(func=cmd_collect)
 
     args = ap.parse_args()

@@ -48,6 +48,8 @@ Use these when the project has no direction yet. Each product still gets its own
 
 - Two families at most, never a third.
 - A display face with personality over a plain body face. Heavy sans at 800 to 950 for personal and punchy work, a serif display for editorial work, a comic or rounded face for playful work.
+- Pick faces fresh for every new project with the procedure and watch list in `imagile:design`. Don't reuse the faces my brands already wear (Fraunces, Space Grotesk, Outfit, Source Serif 4, IBM Plex). They are taken, and most of them are on the watch list now.
+- Show me two or three type pairings in side-by-side mockups with real content before you commit.
 - Keep a plain, readable face for dense text such as quiz questions and lessons.
 - Mono is an accent voice for labels, prices and stats only. Never buttons or navigation.
 - Short uppercase kickers with letter spacing are part of my look. Each one still carries information.

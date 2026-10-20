@@ -22,7 +22,7 @@ The palette in `style.md` matches the design tokens. Images and UI come from one
 
 ## Fit the page
 
-- Character and decorative art ships as a transparent cutout. Use `--background transparent` on the API route, or the `background-removal` skill. Never a dark rectangle on a page that is not dark.
+- Character and decorative art ships as a transparent cutout. Ask for a transparent background in the image prompt, and cut it out with the `background-removal` skill when the result comes back opaque. Never a dark rectangle on a page that is not dark.
 - Fade edges where art meets the page, so it feels part of the layout.
 - Reserve negative space where text will sit. Text over an image needs a scrim or a baked gradient on that side.
 - No text, letters or logos baked into generated images. Set real text in the layout.

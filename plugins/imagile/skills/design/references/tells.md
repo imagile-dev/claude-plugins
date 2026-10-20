@@ -31,6 +31,7 @@ Generated pages cluster around these complete looks:
 
 ## Type
 
+- A face from the watch list in `typography.md`, picked by reflex on a new project
 - One word of a headline accented in italic, bold or a different color
 - A tracked-out uppercase eyebrow above every heading. Keep an eyebrow only when it carries information the heading does not, and at most one per three sections
 - Monospace for small labels as a "technical" costume

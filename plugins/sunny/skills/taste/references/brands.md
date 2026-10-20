@@ -22,7 +22,19 @@ Each brand has its own art direction. They share habits, not a template. When yo
 - **Logo:** a circuit-trace brain with a serif "i". Reproduce it as it is. Never redraw it.
 - **Copy:** plain-spoken, confident, dry, anti-marketing. Often names what Imagile is not.
 
-Note: warm cream, a serif display and a terracotta accent is now one of the most common generated looks. It is right for imagile.dev because it was chosen and pinned. Do not reach for it on a new project by default.
+### Subtle adjustments to consider
+
+Warm cream, a serif display and a terracotta accent is now one of the most common generated looks, and `#c25d33` sits close to the clay accent that generated pages default to. imagile.dev keeps its direction. These small moves push it from "tasteful default" toward "drafting table only Imagile has", without a rebrand. They are ordered from smallest to largest. Each ships on its own, and none touches the logo.
+
+1. **Drop the yellow cast from the paper.** Move the light background from `#faf8f4` toward a near-neutral drafting vellum around `#f6f6f3`, and the surface to about `#fcfcfa`. Keep the warmth in the ink and the accent, where it reads as intent. Dark mode stays as it is.
+2. **Draw the grid in non-photo blue.** Drafters sketch in a light blue that copiers drop. Tint the drafting grid toward that blue (around `#a4cde0` at a few percent opacity) instead of warm gray. It is a detail only a drafting table has, so it passes the competitor test where cream does not.
+3. **Move the accent from clay to red pencil.** Shift the hue a few degrees toward the red of a correction pencil, around `#b4452c` in light and `#e26f52` in dark. It still reads warm, and it stops matching the default clay. It also fixes a contrast miss: white button text on today's `#c25d33` is 4.3:1, under AA for normal text, and on `#b4452c` it is 5.5:1. The dark pair measures 5.9:1 against `#16130f`.
+4. **Let blueprint blue be the second voice.** The focus blue (`#1b6fe0`, `#6fb2ff`) already exists. Use it for line art and inline links too, so terracotta marks only the action. Link text needs a deeper shade in light mode: `#1b6fe0` is 4.4:1 on the vellum, and `#1763cc` is 5.3:1. Dark mode's `#6fb2ff` is 8.4:1 and needs no change.
+5. **Replace eyebrows with patent figure labels.** Swap the uppercase eyebrows and registration-mark bullets for patent-style captions ("Fig. 3, the review loop") and leader-line callouts that point at the thing they describe. The drafting idea does the work the chrome is doing now.
+6. **Pull mono back to real data.** Fira Code stays on prices, stats and commands. Remove it from decorative labels, where it reads as a technical costume.
+7. **Retest the display face last.** Source Serif 4 and IBM Plex Sans are both on the watch list now. Run the font procedure for the display role only, with "a patent drawing" as the physical object. Mock up two or three candidates (an engineering or highway-gothic grotesk, a slab with typewriter roots, and the current serif) on the real home page, and keep Source Serif 4 if it still wins.
+
+Steps 1 to 4 are token changes in `global.css`. Steps 5 and 6 touch components. Step 7 needs mockups and a decision. The changes belong in the imagile-dotcom repo, with before and after screenshots at 375px and desktop, light and dark.
 
 ## toil
 
