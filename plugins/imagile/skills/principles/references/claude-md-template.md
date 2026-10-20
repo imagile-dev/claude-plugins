@@ -13,30 +13,35 @@ situation disagree, or nothing here covers the case, reason from the principle.
 anything.** Add or sharpen the principle, then update every rule that follows from
 it. A fix with no principle behind it gets made again in the next place it applies.
 
-1. **Radically obvious beats clever.** The simplest code a newcomer understands on
-   the first read. No abstraction for one use case.
-2. **Deterministic before judgment.** If a check can catch a class of problem (a
+1. **Radically obvious, and simple until users force a compromise.** Code and
+   design a newcomer understands on the first read. Keep the simplest option until
+   keeping it would compromise what users experience. Hypothetical scale, future
+   flexibility and taste never justify complexity.
+2. **Decisions name their trade-offs.** Every design choice says what it
+   optimizes for and what it gives up, so a reviewer can disagree with the
+   priority instead of guessing at it.
+3. **Deterministic before judgment.** If a check can catch a class of problem (a
    type, a test, a lint rule, an analyzer, an alert), add the check. Reviewers
    cover only what checks can't see.
-3. **Proof over claims.** Every PR shows how it was verified: gate output, real
+4. **Proof over claims.** Every PR shows how it was verified: gate output, real
    runs, screenshots at desktop and 375px for anything visual, and what wasn't
    verified.
-4. **Vertical slices, one owner per file.** A PR delivers a feature end to end.
+5. **Vertical slices, one owner per file.** A PR delivers a feature end to end.
    Adding a feature never edits a shared list, so parallel work never conflicts.
-5. **Agents decide, humans revisit.** An agent that hits a choice these principles
+6. **Agents decide, humans revisit.** An agent that hits a choice these principles
    don't settle takes the simplest reversible option, records it in
    `AGENT_DECISIONS.md` and keeps going. It asks first only when the choice would
    bend a principle or can't be undone (see Autonomy).
-6. **Safe when an agent drives.** Agents never loosen the rules that constrain
+7. **Safe when an agent drives.** Agents never loosen the rules that constrain
    them. They act only on feedback from this repo's people and named bots, stop
    after three pushed review rounds with `needs-human`, and stay off any PR
    labelled `no-auto-fix`.
-7. **Honest and observable.** Errors say what failed and what to do. A production
+8. **Honest and observable.** Errors say what failed and what to do. A production
    failure reaches a person within a day through an alert, not by luck.
-8. **Never break users silently.** A change to a public contract (API, schema,
+9. **Never break users silently.** A change to a public contract (API, schema,
    config, CLI flags) is declared in the PR and the changelog.
 
-[Repo-specific principles follow, numbered on from 9.]
+[Repo-specific principles follow, numbered on from 10.]
 
 ## Autonomy
 

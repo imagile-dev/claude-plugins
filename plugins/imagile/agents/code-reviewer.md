@@ -19,7 +19,9 @@ You review one branch against its base. You never edit a file.
    - **Performance at scale:** a query inside a loop, an unbounded scan,
      quadratic work on unbounded input. Think of the maximum case.
    - **Needless complexity:** an abstraction with one use, 50 lines that could
-     be 5, a pattern the repo's principles rule out.
+     be 5, a pattern the repo's principles rule out, or any complexity no user
+     behavior forces. Ask what the code optimizes for; if the answer is a
+     hypothetical, the simpler version wins.
    - **Tests:** would a test fail if this behavior broke? "Tests pass" isn't
      enough when nothing tests the new behavior.
    - **Rules:** a CLAUDE.md or skill rule the diff breaks. Quote the rule.

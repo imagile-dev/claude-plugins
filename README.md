@@ -28,7 +28,7 @@ Sunny's personal toolkit: writing in Sunny's voice, conversation, and the people
 | Identity | `/sunny:identity` | Write personal bios, speaker profiles, and LinkedIn About sections |
 | Mentoring | `/sunny:mentoring` | Prep 1:1s and growth conversations |
 | Hiring | `/sunny:hiring` | Pre-screen candidates and structure hiring debriefs |
-| Eng Philosophy | `/sunny:eng-philosophy` | Apply engineering philosophy frameworks to team and culture questions |
+| Eng Philosophy | `/sunny:eng-philosophy` | Apply engineering philosophy frameworks (Phoenix Project, Agile values, staffeng.com) to team, culture and impact questions |
 
 ### tools
 
@@ -58,7 +58,7 @@ The Imagile engineering system. A repo's `CLAUDE.md` (with an `AGENTS.md` symlin
 |-------|---------|-------------|
 | Principles | `/imagile:principles` | Write, sharpen and audit a repo's principle-first `CLAUDE.md`; turn corrections into principles |
 | Revisit | `/imagile:revisit` | Review the agents' open decisions in one batch: keep, promote to a principle, or reverse |
-| Architecture | `/imagile:architecture` | Design and review systems against Imagile's principles, with .NET/Blazor, Node/TypeScript and Azure naming references |
+| Architecture | `/imagile:architecture` | Design and review systems against Imagile's principles, naming what each decision optimizes for and its trade-offs, with .NET/Blazor, Node/TypeScript and Azure naming references |
 
 #### Development track: ship inside the principles
 

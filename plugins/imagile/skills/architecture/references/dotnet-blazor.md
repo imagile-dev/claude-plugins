@@ -10,7 +10,7 @@ Company.App.Api          → ASP.NET Core API, MVC controllers (Container Apps)
 Company.App.Ui           → Blazor Razor class library (pages, components, client services)
 Company.App.Ui.Web       → Blazor WASM host
 Company.App.Domain       → POCOs and enums shared by server and client (no server deps)
-Company.App.Backend      → shared backend logic (not sent to the client)
+Company.App.Core         → shared backend logic, not sent to the client (`Backend` is fine too)
 Company.App.Data.<Name>  → EF Core project, one per database schema
 Company.App.Functions    → Azure Functions (one app, many functions)
 Company.App.Cli          → dev operations, seeding, migrations
@@ -19,7 +19,7 @@ Company.Tests.Postdeployment  → Reqnroll + Playwright E2E, runs after deploy
 ```
 
 - Naming: `CompanyName.AppName.ComponentName`. Standard components: `Api`, `Ui`,
-  `Ui.Web`, `Domain`, `Backend`, `Data.<Schema>`, `Functions`, `Cli`.
+  `Ui.Web`, `Domain`, `Core` (or `Backend`), `Data.<Schema>`, `Functions`, `Cli`.
 - No more class libraries unless you're producing a distributable package. Fewer
   projects is the point, not convenience.
 - An interface with a single implementation lives in the same file as it.

@@ -13,6 +13,7 @@ Apply Sunny's engineering philosophy frameworks to diagnose situations, answer q
 
 1. Read `../../voice/STYLE-GUIDE.md` for voice, humor, and tone reference — especially the Messaging section (dry wit, corporate sarcasm, deadpan escalation).
 2. Read `../identity/references/opinions.md` — this is the source of truth for Sunny's actual positions on standups, Scrum, estimation, code reviews, over-engineering, hiring, AI, and tech debt. Use it to ground any reasoning or writing in what he specifically believes, not generic takes.
+   Then read `references/staff-engineering.md` when the question is about impact, prioritization, career growth, technical leadership or what a senior engineer should be working on.
 3. Parse `$ARGUMENTS` to identify the mode:
    - **Question** — "how should we..." or "what do you think about..." → give a direct answer grounded in the frameworks
    - **Situation analysis** — "our team does X and it's causing Y" → diagnose the actual problem first, then prescribe
@@ -41,6 +42,14 @@ These are important. The skill's biggest failure mode is generating too much pro
 - Technical debt is a business risk, not a developer problem. Make it visible; quantify it as unplanned work cost.
 - The "Brent" problem: key-person dependencies look like heroics but are org design failures. Fix by extracting knowledge and stopping new work from routing through the constraint.
 - Theory of Constraints: identify the bottleneck first. Improving upstream creates pileup. Once the constraint is elevated, find the next one.
+
+**Staff engineering (staffeng.com)**
+- Full reference: `references/staff-engineering.md`.
+- Four archetypes: Tech Lead, Architect, Solver, Right Hand. Different shapes of the same level, not a ladder.
+- Work on what matters: existential issues first, then work with room and attention. Name the traps: snacking, preening, chasing ghosts.
+- Edit and finish: a small early nudge beats a rewrite, and a 90%-done project delivers nothing.
+- Strategy is written bottom-up: five design docs make a strategy, five strategies make a vision.
+- Influence is borrowed: stay aligned with authority, follow good plans, sponsor others into the room.
 
 **Agile values (not process)**
 - Sunny believes in the Agile Manifesto's values and 12 principles -- not prescriptive implementations of them. His specific positions on Scrum, standups, estimation, and sprint planning are in `opinions.md` (already loaded in Step 2).

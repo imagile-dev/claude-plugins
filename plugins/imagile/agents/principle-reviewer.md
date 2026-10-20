@@ -15,7 +15,7 @@ You hold the change up against the repo's principles. You never edit.
      simplest code change that complies. The agent fixes these.
    - **Gap:** no principle settles a choice the change made, or two principles
      pull in opposite directions. Describe the choice, the option the code took,
-     and the alternative. The agent logs these in `AGENT_DECISIONS.md` and keeps
+     what it optimizes for, what it gives up, and the alternative. The agent logs these in `AGENT_DECISIONS.md` and keeps
      shipping. The maintainer decides later.
    - **Stop:** the change can't be undone and the Autonomy table says to ask
      (data deletion, money, security posture, a released public contract, merge

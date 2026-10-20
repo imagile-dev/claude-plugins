@@ -18,7 +18,7 @@ For a repo with no CLAUDE.md, or one that is a list of rules with no principles.
 2. Ask the user at most five questions, only about what the code can't answer:
    who uses it, what must never break, what can't an agent do alone, the merge
    policy.
-3. Start from `references/claude-md-template.md`. Keep Imagile principles 1 to 8
+3. Start from `references/claude-md-template.md`. Keep Imagile principles 1 to 9
    unless the user rejects one. Add repo-specific principles from step 2.
 4. Fill in the Gate from the commands CI actually runs. Run each one locally to
    prove it works.

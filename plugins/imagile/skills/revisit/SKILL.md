@@ -15,9 +15,9 @@ Append to `AGENT_DECISIONS.md` at the repo root under `## Open`, in the same PR
 as the code it affects:
 
 ```markdown
-- **[What was decided, in one line.]** [Why: the principle it leaned on, or
-  "simplest reversible option".] Where: `path/or/area`, #PR. Alternative: [the
-  option not taken].
+- **[What was decided, in one line.]** Optimizing for: [the quality it favors,
+  and the principle it leaned on]. Gave up: [the cost]. Alternative: [the option
+  not taken]. Where: `path/or/area`, #PR.
 ```
 
 Log only what a reasonable maintainer might decide differently. Don't log what a

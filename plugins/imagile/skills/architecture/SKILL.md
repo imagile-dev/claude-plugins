@@ -10,8 +10,11 @@ stack. The references hold the stack-specific rules that follow from them.
 
 ## Principles
 
-1. **Radically obvious beats clever.** A reader who has never seen the code
-   understands it on the first pass. No abstraction exists for one use case.
+1. **Radically obvious, and simple until users force a compromise.** Code and
+   design a newcomer understands on the first pass. Stay with the simplest
+   option until keeping it would compromise what users experience: behavior,
+   correctness or performance they feel. Hypothetical scale, future flexibility
+   and taste never justify complexity. No abstraction exists for one use case.
 2. **Modular monolith first.** Extract a service only when its load profile, its
    deploy cadence or its owning team is genuinely separate. Late is right.
 3. **Slice by feature, not by layer.** A feature folder holds its pages,
@@ -45,7 +48,11 @@ stack. The references hold the stack-specific rules that follow from them.
      testing, seeding, CLI, naming of projects
    - `references/node-ts.md`: TypeScript CLIs, MCP servers, React/Vite UIs
    - `references/azure-naming.md`: Azure resource names and Bicep
-4. **Answer.** Recommendation first, then the reasons, then the evidence. Use
+4. **Name what you're optimizing for.** Before recommending, state the one or
+   two qualities this decision optimizes (for example obviousness, time to ship,
+   user-felt latency, cost, operability) and what it gives up for them. Every
+   alternative is weighed on the same axes.
+5. **Answer.** Recommendation first, then the trade-offs, then the evidence. Use
    `Company.App.*` placeholder names, never client names.
 
 ## Output
@@ -56,11 +63,20 @@ stack. The references hold the stack-specific rules that follow from them.
 ### Recommendation      (for a review: Assessment, then Concerns)
 [What to build, where it lives, how it's structured.]
 
+### Optimizing for
+[The one or two qualities this optimizes, and what it gives up. One line each.]
+
 ### Structure
 [Project and folder layout, key files.]
 
-### Alternatives
-1. [Option]: [why not, in one line]
+### Trade-offs
+| Option | Gains | Costs | Forced by a user need? |
+|--------|-------|-------|------------------------|
+| [Recommended] | | | |
+| [Alternative] | | | |
+
+The recommended option is the simplest one whose costs users never feel. If a
+more complex option wins, name the user behavior that forces it.
 
 ### Ownership
 [Who owns it, and whether the boundary matches.]
@@ -70,5 +86,5 @@ stack. The references hold the stack-specific rules that follow from them.
 ```
 
 When a decision here is not covered by a principle and the user isn't in the
-loop, take the simplest option and record it in `AGENT_DECISIONS.md` (see the
-`imagile:revisit` skill). Don't stop to ask.
+loop, take the simplest option and record it in `AGENT_DECISIONS.md` with what
+it optimizes for (see the `imagile:revisit` skill). Don't stop to ask.
