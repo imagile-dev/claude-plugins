@@ -45,7 +45,7 @@ that one agent finishes it in one sitting.
 ## Running slices in parallel
 
 Start one agent per slice in a parallel group, each on its own branch or
-worktree, each finishing with `imagile:ship`. Merge `main` into the remaining
-branches after each merge. When two in-flight PRs keep conflicting, that's a
+worktree, each finishing with `imagile:ship`. `imagile:ship` rebases each
+remaining branch onto `main` before its next round. When two in-flight PRs keep conflicting, that's a
 missing registration-by-convention seam: log it with `imagile:revisit` and fix
 the seam before the next wave.
