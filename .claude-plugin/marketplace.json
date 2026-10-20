@@ -13,13 +13,13 @@
     {
       "name": "imagile",
       "source": "./plugins/imagile",
-      "description": "Imagile engineering system: principles and architecture, vertical-slice plans, parallel reviewer agents and a ship flow to merge, plus accessibility, AI images, web images and background removal",
+      "description": "Imagile engineering system: principles and architecture, vertical-slice plans, parallel reviewer agents and a ship flow to merge, plus design, accessibility, AI images, web images and background removal",
       "category": "development"
     },
     {
       "name": "sunny",
       "source": "./plugins/sunny",
-      "description": "Sunny Kolattukudy's personal skills: his voice for writing and bios, engineering philosophy, hiring, mentoring and default chat register",
+      "description": "Sunny Kolattukudy's personal skills: his voice for writing and bios, visual taste, engineering philosophy, hiring, mentoring and default chat register",
       "category": "productivity"
     }
   ]

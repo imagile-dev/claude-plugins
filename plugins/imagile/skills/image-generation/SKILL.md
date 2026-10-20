@@ -1,44 +1,53 @@
 ---
 name: image-generation
-description: Generate or edit images from a prompt through ChatGPT in Chrome or the OpenAI Images API. Use for logos, icons, hero art, mockups, transparent assets or prompt edits.
+description: Generate or edit images through the ChatGPT website in a browser, falling back to the OpenAI Images API. Use for logos, icons, hero art, mockups, transparent assets or prompt edits.
 ---
 
-Generate images from text prompts (and edit existing ones) by one of two routes: ChatGPT's own UI, driven through Claude in Chrome, or the OpenAI Images API. Both leave behind the same run folder, so the route is an implementation detail the user shouldn't have to think about. The bundled scripts are stdlib-only Python — no SDK, no `pip install`.
+Generate images from text prompts (and edit existing ones) through the ChatGPT website first, and through the OpenAI Images API only when the website can't do the job. Both routes leave behind the same run folder, so the route is an implementation detail the user shouldn't have to think about. The bundled scripts are stdlib-only Python — no SDK, no `pip install`.
 
 ## Pick the route
 
-**Try the browser first.** It runs on the user's ChatGPT subscription: no API key to hunt down, nothing billed per image. Same underlying model.
+**Default to the ChatGPT website.** It runs on the user's ChatGPT plan: no API key, nothing billed per image, same underlying model. Don't reach for the API because a key happens to be set, and don't skip the website because it takes a few more steps.
 
-**Skip it and go straight to the API when** any of these are true:
+**Fall back to the API only when** one of these is true:
 
-- The browser tools aren't in this session (see below) — don't stall the task trying to get them.
-- The image needs a **transparent background**, an **exact pixel size**, or a **masked edit**. The UI can't do any of the three.
-- The user wants **several variations at once**, or a run that's meant to be scripted and repeated.
-- The user said to use the API, or mentioned their key.
+- No browser tool in this session can reach chatgpt.com (see below), after you have looked for one.
+- ChatGPT isn't signed in, and the user would rather not sign in.
+- The website stalled in a way the stall table below says to route around: the daily image cap, or a second refusal.
+- The job needs a **masked edit**, or a scripted run of more than four variations. The website can't do either reliably.
+- The user said to use the API.
 
-Say which route produced the image when you report back — the user's mental model of cost depends on it.
+Transparent backgrounds and exact sizes no longer force the API. Ask ChatGPT for a transparent background in the prompt, and if the PNG comes back opaque, cut it out with the `background-removal` skill. For an exact size, generate at the closest aspect ratio and crop or resize locally (`uv run --with pillow python -c "..."`). Use the API's `--background transparent` or `-s WIDTHxHEIGHT` only when the local fix isn't good enough.
 
-| | ChatGPT UI | Images API |
+Say which route produced the image when you report back — the user's mental model of cost depends on it. When you fall back, say why in one line.
+
+| | ChatGPT website | Images API |
 |---|---|---|
 | Cost | included in their plan | ~$0.006 (low) – $0.21 (high) per image |
-| Setup | Claude in Chrome + a logged-in ChatGPT | `OPENAI_API_KEY` |
-| Size | described in words ("16:9 landscape") | `-s 1536x1024`, or any `WIDTHxHEIGHT` |
-| Transparent background | no | `--background transparent` |
+| Setup | a browser tool + a signed-in ChatGPT | `OPENAI_API_KEY` |
+| Size | described in words ("16:9 landscape"), then cropped locally | `-s 1536x1024`, or any `WIDTHxHEIGHT` |
+| Transparent background | ask in the prompt, or `background-removal` after | `--background transparent` |
 | Masked edit | no | `--mask` |
-| Batch | ask in the prompt; not guaranteed | `-n 1..10` |
+| Batch | a few, one message each | `-n 1..10` |
 | Ceiling | the account's daily image cap | account quota and billing |
 
 ---
 
-# Route 1 — ChatGPT in the browser
+# Route 1 — the ChatGPT website
 
-## Is it available?
+## Find a browser
 
-Chrome integration is an MCP server named `claude-in-chrome`; its tools are named `mcp__claude-in-chrome__*`. If tool schemas are deferred in this session, search for them (`claude-in-chrome`, or `browser tab navigate`) before concluding they're missing — an empty tool list up front doesn't mean the route is closed.
+Any browser tool that can sign in to chatgpt.com works. Look for them in this order, and use the first one that is signed in to ChatGPT:
 
-No browser tools means the route is closed **for this session** and can't be opened from inside it. Take the API route now, and mention once, at the end, that `claude --chrome` (or `/chrome` → "Enabled by default") would let the next run go through their ChatGPT account instead. Don't ask the user to restart mid-task.
+1. **The built-in browser** of the Claude desktop app — tools named `mcp__Claude_Browser__*` (or `mcp__remote-devices__Claude_Browser__*` from a linked cloud session). Its profile persists across sessions, so one sign-in lasts.
+2. **Claude in Chrome** — tools named `mcp__claude-in-chrome__*`. It drives the user's real Chrome, where they are often already signed in to ChatGPT.
+3. **Any other browser MCP** with a persistent, signed-in profile.
 
-The first browser action of a session asks permission to use the `claude-in-chrome` skill. That prompt is expected — it isn't a failure.
+If tool schemas are deferred, search for them (`Claude_Browser`, `claude-in-chrome`, `browser tab navigate`) before concluding they're missing — an empty tool list up front doesn't mean the route is closed. Load each browser's skill (`built-in-browser`, `chrome-browser`) before its first use when the session lists one.
+
+**Check the sign-in before you prepare anything.** Open `https://chatgpt.com/` and look for a "Log in" button or a "Log in to create images" prompt. When the first browser isn't signed in, try the next one. When none is, ask the user once to sign in to ChatGPT in the browser you name, and wait. Never type their password or click through the sign-in yourself. If they decline, take the API route.
+
+No browser tools at all means the website route is closed **for this session**. Take the API route now, and mention once, at the end, that the desktop app's built-in browser or `claude --chrome` would let the next run go through their ChatGPT plan instead.
 
 ## The flow
 
@@ -52,27 +61,31 @@ It prints `run_dir`, `prompt_file`, `downloads_dir`, and the composed prompt bet
 
 **2. Open a new tab on `https://chatgpt.com/` and start a fresh chat.** A previous conversation's context bleeds into image results; a new chat is worth the extra click.
 
-**3. Type the prompt.** Lead with an explicit instruction — `Generate an image: <prompt>` — or pick the image tool from the composer's `+` menu, so ChatGPT renders instead of writing an essay about what it would render. There are no size or quality flags here: put aspect ratio in words ("square", "16:9 landscape", "tall 3:4 portrait") and put quality in the prompt's detail. To edit an existing image, attach it to the message and describe the change.
+**3. Type the prompt.** Lead with an explicit instruction — `Generate an image: <prompt>` — or pick the image tool from the composer's `+` menu, so ChatGPT renders instead of writing an essay about what it would render. Put aspect ratio in words ("square", "16:9 landscape", "tall 3:4 portrait"), add "transparent background" when the asset needs one, and put quality in the prompt's detail. To edit an existing image, attach it to the message and describe the change.
 
 **4. Wait.** Generation runs 30–90 seconds. Check the page every 15 seconds or so — reading it in a tight loop wastes turns and tells you nothing new.
 
-**5. Download the image** using the download control on the image itself (usually revealed by hovering or by opening the image full-size). Then confirm the file actually landed in `downloads_dir` — the click can silently do nothing.
+**5. Get the file out.** Two ways, in this order:
+
+- **Download button.** Use the download control on the image itself (usually revealed by hovering or by opening the image full-size), then confirm the file actually landed in `downloads_dir` — the click can silently do nothing, and the built-in browser may save somewhere else.
+- **The image link.** If no file lands, read the image's `src` from the page (for example `[...document.querySelectorAll('img')].filter(i => i.naturalWidth >= 512).map(i => i.src)` in the page's JavaScript) and pass it to `collect --url`. The script fetches only `https` links on ChatGPT and OpenAI hosts. A `blob:` link, an expired link or one that needs the browser's cookies fails with exit `3`; then ask the user to save the image, or take the API route.
 
 **6. Collect it** into the run folder, which also finishes `prompt.md`:
 
 ```bash
 uv run "${CLAUDE_PLUGIN_ROOT}/skills/image-generation/scripts/chatgpt_ui.py" collect --run-dir .claude/image-generation/260814-rocket-icon
+uv run "${CLAUDE_PLUGIN_ROOT}/skills/image-generation/scripts/chatgpt_ui.py" collect --run-dir .claude/image-generation/260814-rocket-icon --url "https://chatgpt.com/backend-api/estuary/content?id=..."
 ```
 
-With no file arguments it takes the newest image saved since `prepare` ran, so an unrelated older download won't be swept up. Pass `-n 3` for three images, explicit paths when you want to control which file becomes which (`collect --run-dir DIR ~/Downloads/a.png ~/Downloads/b.png`), `--downloads-dir` for a browser that saves elsewhere, and `--copy` to leave the original in place. Exit code `3` means nothing new was found — check the download actually happened rather than retrying blind.
+With no file arguments it takes the newest image saved since `prepare` ran, so an unrelated older download won't be swept up. Pass `-n 3` for three images, explicit paths when you want to control which file becomes which (`collect --run-dir DIR ~/Downloads/a.png ~/Downloads/b.png`), `--url` once per image link, `--downloads-dir` for a browser that saves elsewhere, and `--copy` to leave the original in place. Exit code `3` means nothing new was found or fetched — check the download actually happened rather than retrying blind.
 
 ## When the browser route stalls
 
-- **Login wall** — Claude in Chrome stops at login pages by design. Ask the user to sign in, then continue. If they'd rather not, fall back to the API.
+- **Login wall** — never sign in for the user. Ask them to sign in, then continue. If they'd rather not, fall back to the API.
 - **Refusal** — ChatGPT declined the prompt. Rephrase once. If it declines again, take the API route (the moderation stacks aren't identical) rather than arguing with it.
 - **Daily image cap** — free accounts get only a few images per rolling day. Switch to the API and say why.
-- **Downloads land somewhere unreachable** — the browser runs on the user's machine, so in a remote or containerized session the download folder may not exist locally. Either have the user hand you the file (then `collect` with an explicit path), or use the API.
-- **Extension went idle** mid-run — `/chrome` → "Reconnect extension". Worth one attempt, not three.
+- **Downloads land somewhere unreachable** — use `collect --url` with the image link. If that fails too, have the user hand you the file (then `collect` with an explicit path), or use the API.
+- **Extension went idle** mid-run (Claude in Chrome) — `/chrome` → "Reconnect extension". Worth one attempt, not three. Then try the built-in browser before the API.
 
 Two things to keep in mind while driving the UI: everything you type goes into the user's ChatGPT account and its history, so send the prompt and nothing else — no repo contents, no keys, no internal detail the prompt doesn't need. And gpt-image-2 output carries provenance metadata and an imperceptible pixel watermark on every tier, API included; that isn't something the download step strips.
 
@@ -101,7 +114,7 @@ Never write the key into a file in the repo, never echo it back, and never inlin
 - **Windows (PowerShell, persists across sessions):** `[Environment]::SetEnvironmentVariable('OPENAI_API_KEY','sk-...','User')` — tell them to run it themselves; restart the terminal afterward.
 - **macOS/Linux:** add `export OPENAI_API_KEY=sk-...` to `~/.zshrc` or `~/.bashrc`.
 
-If both routes are closed — no browser tools and no key — that's the moment to ask, and ask for the key, since it's the one the user can act on immediately.
+If both routes are closed — no signed-in browser and no key — that's the moment to ask. Offer both: sign in to ChatGPT in the browser you name, or paste a key.
 
 ## Prerequisites
 

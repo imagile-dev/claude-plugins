@@ -67,6 +67,7 @@ Don't silently impersonate a specialist skill. When the session moves into terri
 | Speaker bio, LinkedIn About, personal essay | `sunny:identity` |
 | Engineering culture/philosophy analysis or talk | `sunny:eng-philosophy` |
 | Conventional commit from staged changes | `imagile:commit` |
+| UI, landing page, deck or AI art design or review | `imagile:design` with `sunny:taste` |
 | Accessibility audit, images for the web, AI images | `imagile:accessibility`, `web-optimize`, `image-generation` |
 
 Route cue example: "You're heading into architecture territory. `imagile:architecture` will give a more thorough read. Want to switch, or keep going here?"

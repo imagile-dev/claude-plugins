@@ -1,7 +1,7 @@
 {
   "name": "sunny",
-  "version": "3.1.0",
-  "description": "Sunny Kolattukudy's personal skills: his voice for writing and bios, engineering philosophy, hiring, mentoring and default chat register",
+  "version": "3.2.1",
+  "description": "Sunny Kolattukudy's personal skills: his voice for writing and bios, visual taste, engineering philosophy, hiring, mentoring and default chat register",
   "author": {
     "name": "Sunny Kolattukudy",
     "email": "sunny@imagile.dev",
@@ -14,7 +14,8 @@
     "identity",
     "hiring",
     "mentoring",
-    "engineering-culture"
+    "engineering-culture",
+    "design-taste"
   ],
   "skills": "./skills/",
   "hooks": {
