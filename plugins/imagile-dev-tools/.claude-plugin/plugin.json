@@ -1,22 +1,26 @@
 {
   "name": "imagile-dev-tools",
-  "version": "1.5.0",
-  "description": "Imagile developer tools — AI image generation via the ChatGPT UI or the OpenAI Images API, web image optimization, axe-core accessibility audits, and other team-specific utilities",
+  "version": "2.0.0",
+  "description": "Developer skills from Imagile: architecture, planning, commits and code review, plus accessibility audits, AI images, web image optimization and background removal",
   "author": {
-    "name": "kolatts"
+    "name": "Imagile",
+    "email": "sunny@imagile.dev",
+    "url": "https://imagile.dev"
   },
   "license": "MIT",
   "keywords": [
-    "imagile",
-    "images",
-    "openai",
-    "chatgpt",
-    "image-generation",
-    "ai",
+    "architecture",
+    "planning",
+    "code-review",
+    "commit",
     "accessibility",
-    "a11y",
     "wcag",
-    "axe-core"
+    "image-generation",
+    "web-performance",
+    "dotnet",
+    "azure"
   ],
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "homepage": "https://github.com/imagile-dev/claude-plugins",
+  "repository": "https://github.com/imagile-dev/claude-plugins"
 }

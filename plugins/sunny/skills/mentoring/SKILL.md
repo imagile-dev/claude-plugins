@@ -1,11 +1,7 @@
 ---
-name: sunny:mentoring
-description: Prepare for 1:1s and growth conversations for Sunny Kolattukudy. Use this skill when Sunny says "prep my 1:1 with X", "what should I focus on for X's growth", "help me think through a conversation with X", or any variation of 1:1 prep, growth planning, or coaching. Also trigger when Sunny asks about someone on his team, wants to pull JIRA or GitHub data on a team member, or needs to structure a difficult or sensitive conversation.
+name: mentoring
+description: Prepare 1:1s and growth conversations for Sunny Kolattukudy. Use for 1:1 prep, growth plans, coaching or a difficult conversation with a report.
 ---
-
-<!--
-allowed-tools: Read, Bash, Glob, Grep
--->
 
 Help Sunny prepare for 1:1s and growth conversations — data-informed, concise, ready to use in the room.
 

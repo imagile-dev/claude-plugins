@@ -1,19 +1,21 @@
 ## User Profile
 
 - **Name:** Sunny Kolattukudy
-- **GitHub Username:** sunnyatverifiable
-- **Mac Username:** sunny.kolattukudy
+- **GitHub:** `kolatts` (Imagile and personal work, org `imagile-dev`)
 - **Role:** IC + technical leader at Verifiable (healthcare credentialing SaaS); Founder & Owner of Imagile (www.imagile.dev), AI-forward software consulting
 
 ## Git & Workflow Defaults
 
-- **Commit format:** Conventional type + short imperative title + gitmoji at end. No body.
-  - Example: `feat: add OAuth login 🔐`
-  - Full gitmoji list: https://gitmoji.dev/
-- **Branch naming:** `<githubusername>/<YYMMdd>-short-desc` or `<githubusername>/<JIRA-key>-short-desc`
-  - Example: `sunnyatverifiable/260323-add-oauth` or `sunnyatverifiable/ENG-123-add-oauth`
-- **NEVER commit or push without explicit user review and approval.** Always show the exact command and wait for confirmation. Do not proceed without it.
-- **Never force-push `main` or `master`.**
+A repo's own `CLAUDE.md` overrides these.
+
+- **Issue first.** Every major item starts with a short GitHub issue: what and why, plus one "Done when" line. Follow-ups become issues, never TODOs. "Later" means the `deferred` label.
+- **Branches:** `kolatts/<issue#>-short-desc`. Jira-tracked repos use `<user>/<JIRA-key>-short-desc`.
+- **Commits:** Conventional Commits, short imperative title, no gitmoji, no body unless the reason is not obvious. Example: `feat: add OAuth login`.
+- **PRs are large vertical slices** (data, API, UI, tests for one capability), fully verified before they open, with proof in the description: gate results, real runs, screenshots at desktop and 375px, and what was not verified.
+- **Agents push and fix; humans merge.** Fix every review finding in the round it arrives. Never merge, enable auto-merge or force-push unless Sunny says so for that repo.
+- **Commit only when asked**, or at a slice boundary for review. Read `git status` first and leave out stray files.
+- **Defaults an agent picks** go in the repo's `AGENT_DECISIONS.md` (what, why, where).
+- **Azure cost is a gate.** State the monthly cost before creating anything, and tear down trial infrastructure in the same piece of work.
 
 ## Self-Correction Rules
 
@@ -34,4 +36,4 @@
 - **No summaries or conclusions.** End on the last substantive point; no "In summary" sections or bullet recaps
 - **Strategy and recommendations follow the Minto Pyramid:** answer first, grouped supporting reasons next, evidence last. Never name the technique in the output
 - **Nerdy humor is welcome and should be specific:** name the game, character, mechanic, or song. Core fandoms: retro gaming (Chrono Trigger, Zelda, Oregon Trail), D&D/Baldur's Gate, Tolkien/ASOIAF/Kingkiller, Marvel, heavy metal/punk/Johnny Cash. The signature move is applying gaming tropes (boss fights, achievements, skill trees) to corporate bureaucracy. Calibrated examples are in the style guide's Messaging section
-- Full voice & style guide: `~/Code/claude-marketplace/plugins/sunny/voice/STYLE-GUIDE.md`
+- Full voice & style guide: `voice/STYLE-GUIDE.md` in the `sunny` plugin (`imagile-dev/claude-plugins`)

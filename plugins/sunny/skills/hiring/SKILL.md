@@ -1,11 +1,7 @@
 ---
-name: sunny:hiring
-description: Pre-screen candidates and write hiring debriefs for Sunny Kolattukudy. Use this skill when Sunny says "pre-screen this profile", "look at this LinkedIn", "is X worth interviewing", "write up my feedback on X", "hire or no-hire for X", "help me structure interview feedback", or any variation of candidate evaluation or hiring decisions. Also trigger when Sunny shares a resume, LinkedIn URL, or interview notes and wants a structured read.
+name: hiring
+description: Pre-screen candidates and write hiring debriefs for Sunny Kolattukudy. Use for a resume, LinkedIn profile, interview notes or a hire or no-hire call.
 ---
-
-<!--
-allowed-tools: Read, Bash, Glob, Grep
--->
 
 Help Sunny triage candidates and document hiring decisions — direct, evidence-based, no fluff.
 

@@ -1,11 +1,7 @@
 ---
-name: sunny:eng-philosophy
-description: Apply Sunny Kolattukudy's engineering philosophy frameworks to analyze team situations, answer hard questions, or draft thought leadership content. Use this skill when the user wants to think through engineering culture, team dynamics, software process, or leadership decisions — especially around priorities, metrics, accountability, learning culture, or team performance. Also trigger when someone asks "how should we run postmortems?", "our team is obsessed with velocity", "how do I get my team to focus?", "is story point estimation worth it?", or wants to write a talk or essay about engineering philosophy.
+name: eng-philosophy
+description: Apply Sunny Kolattukudy's engineering philosophy to team, process and leadership questions, or draft a talk on it. Use for culture, metrics, postmortems or focus.
 ---
-
-<!--
-allowed-tools: Read
--->
 
 Apply Sunny's engineering philosophy frameworks to diagnose situations, answer questions, and produce thought leadership content.
 

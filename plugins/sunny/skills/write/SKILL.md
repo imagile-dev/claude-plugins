@@ -1,11 +1,7 @@
 ---
-name: sunny:write
-description: Write anything in Sunny Kolattukudy's voice — Slack messages, emails, proposals, blog posts, LinkedIn articles, or thought leadership pieces. Use this skill when Sunny needs to write a communication or piece of content: "draft a Slack to X about Y", "write an email to the team", "help me write a blog post about Z", "draft a proposal for...", "write a LinkedIn post about...". Replaces sunny:write-casual, sunny:write-formal, and sunny:write-blog.
+name: write
+description: Write anything in Sunny Kolattukudy's voice, from Slack and email to proposals, blog and LinkedIn posts. Use when Sunny asks to draft or rewrite a message or article.
 ---
-
-<!--
-allowed-tools: Read
--->
 
 Write in Sunny's voice. Mode is inferred from context — don't ask unless genuinely unclear.
 
