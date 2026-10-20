@@ -1,20 +1,21 @@
 {
   "name": "sunny",
-  "version": "2.6.0",
-  "description": "Personal developer workflow toolkit — smart commits, code review, project scaffolding, and writing in your voice",
+  "version": "3.3.0",
+  "description": "Sunny Kolattukudy's personal skills: his voice for writing and bios, visual taste, engineering philosophy, hiring, mentoring and default chat register",
   "author": {
-    "name": "kolatts"
+    "name": "Sunny Kolattukudy",
+    "email": "sunny@imagile.dev",
+    "url": "https://imagile.dev"
   },
   "license": "MIT",
   "keywords": [
-    "workflow",
-    "git",
-    "commit",
-    "review",
-    "scaffold",
     "writing",
-    "azure",
-    "infrastructure"
+    "voice",
+    "identity",
+    "hiring",
+    "mentoring",
+    "engineering-culture",
+    "design-taste"
   ],
   "skills": "./skills/",
   "hooks": {
@@ -28,5 +29,7 @@
         ]
       }
     ]
-  }
+  },
+  "homepage": "https://github.com/imagile-dev/claude-plugins",
+  "repository": "https://github.com/imagile-dev/claude-plugins"
 }

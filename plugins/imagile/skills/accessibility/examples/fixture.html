@@ -1,0 +1,33 @@
+<!doctype html>
+<!--
+  A page with known axe violations, for checking axe_audit.mjs end to end.
+  Expected in every theme: image-alt, button-name, label, link-name; with --best-practice, region too.
+  Expected in the "neon" theme only (data-theme="neon"): color-contrast on .note.
+  The "Theme" button and localStorage key "fixture.theme" both switch to neon.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>axe_audit fixture</title>
+  <style>
+    body { font: 16px/1.5 system-ui, sans-serif; background: #fff; color: #1a1a1a; margin: 1rem; }
+    .note { color: #333; }
+    [data-theme="neon"] body { background: #101010; color: #eee; }
+    [data-theme="neon"] .note { color: #3a3a3a; }
+    @media (prefers-color-scheme: dark) { body { background: #111; color: #eee; } .note { color: #ccc; } }
+  </style>
+  <script>
+    try { if (localStorage.getItem('fixture.theme')) document.documentElement.dataset.theme = localStorage.getItem('fixture.theme'); } catch {}
+  </script>
+</head>
+<body>
+  <h1>Fixture</h1>
+  <p class="note">This note fails contrast only in the neon theme.</p>
+  <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="40" height="40">
+  <button type="button"><svg width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="6"/></svg></button>
+  <span>Search</span> <input type="text">
+  <a href="/somewhere"><svg width="16" height="16" aria-hidden="true"><rect width="16" height="16"/></svg></a>
+  <button type="button" id="theme-toggle" onclick="document.documentElement.dataset.theme = 'neon'">Theme</button>
+</body>
+</html>

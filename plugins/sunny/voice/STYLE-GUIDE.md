@@ -1,6 +1,6 @@
 # Sunny's Voice & Style Guide
 
-This file defines the tone, vocabulary, and patterns for writing skills (`/sunny:write-formal` and `/sunny:write-casual`). It is populated with real examples from Sunny's actual writing so outputs sound like him.
+This file defines the tone, vocabulary, and patterns for writing skills (`sunny:write`, `sunny:identity` and the other `sunny` skills). It is populated with real examples from Sunny's actual writing so outputs sound like him.
 
 ---
 

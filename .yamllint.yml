@@ -1,0 +1,13 @@
+extends: default
+
+ignore: |
+  node_modules/
+
+rules:
+  document-start: disable
+  line-length:
+    max: 160
+  truthy:
+    allowed-values: ['true', 'false', 'on']
+  comments:
+    min-spaces-from-content: 1

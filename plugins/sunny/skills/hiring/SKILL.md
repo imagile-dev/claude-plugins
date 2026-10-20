@@ -1,11 +1,7 @@
 ---
-name: sunny:hiring
-description: Pre-screen candidates and write hiring debriefs for Sunny Kolattukudy. Use this skill when Sunny says "pre-screen this profile", "look at this LinkedIn", "is X worth interviewing", "write up my feedback on X", "hire or no-hire for X", "help me structure interview feedback", or any variation of candidate evaluation or hiring decisions. Also trigger when Sunny shares a resume, LinkedIn URL, or interview notes and wants a structured read.
+name: hiring
+description: Pre-screen candidates and write hiring debriefs for Sunny Kolattukudy. Use for a resume, LinkedIn profile, interview notes or a hire or no-hire call.
 ---
-
-<!--
-allowed-tools: Read, Bash, Glob, Grep
--->
 
 Help Sunny triage candidates and document hiring decisions — direct, evidence-based, no fluff.
 
@@ -50,6 +46,7 @@ Sunny's goal is to triage before spending interview time. Be direct and brief �
 - Green: trajectory shows growth (not just tenure), evidence of shipping real things, senior role → scope/leadership signals
 - Yellow: gaps without context, claims without evidence, stale or absent public activity
 - Red: resume inconsistencies vs. public profiles, seniority title with no scope signal, no technical output for a technical role
+- Staff and above: which archetype the evidence points to (Tech Lead, Architect, Solver, Right Hand; see `../eng-philosophy/references/staff-engineering.md`), and whether it fits the role. Ask at least one question that tests whether they work on what matters: "What's the most important thing you chose *not* to do last year, and why?"
 
 **Keep it short.** One line per flag. Questions should be ones you could read off the screen in a call. The one-line take is the most important line — make it a real sentence, not a hedge.
 
@@ -83,6 +80,9 @@ Ask for: candidate name, role level, and Sunny's raw notes or observations from 
 ### Non-technical
 - [How they communicated, handled ambiguity, responded to pushback]
 - [Behavioral depth: were their examples concrete or surface-level?]
+
+### Staff shape (staff and above only)
+[Archetype the evidence shows, the fit with the role, and whether they picked high-impact work or snacked.]
 
 ### Watch-outs
 [1-2 things to be aware of if hired, or the primary concerns if not. Don't skip this section.]

@@ -1,0 +1,11 @@
+{
+  "urls": ["http://127.0.0.1:8123/fixture.html"],
+  "viewports": ["375x812", "1440x900"],
+  "failOn": "serious",
+  "themes": [
+    { "name": "base-light", "severity": "strict", "scheme": "light" },
+    { "name": "base-dark", "severity": "strict", "scheme": "dark" },
+    { "name": "neon-click", "severity": "report", "scheme": "light", "setup": [{ "click": "#theme-toggle" }] },
+    { "name": "neon-storage", "severity": "report", "scheme": "light", "setup": [{ "localStorage": { "fixture.theme": "neon" } }] }
+  ]
+}

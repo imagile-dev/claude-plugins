@@ -1,11 +1,7 @@
 ---
-name: sunny:identity
-description: Write personal content in Sunny Kolattukudy's own voice using his full life story and background — speaker bios, LinkedIn "About" sections, personal introductions, career essays, conference profiles, or any writing that needs to sound like Sunny wrote it rather than about him. Use this skill when someone asks to write Sunny's bio, draft an intro for him, create his LinkedIn summary, write a speaker profile, or craft any first-person piece where Sunny is the subject. Also trigger when someone asks "write a bio for me", "introduce me for this talk", "write my LinkedIn about", or describes wanting a personal statement that sounds authentic rather than polished.
+name: identity
+description: Write first-person bios and profiles in Sunny Kolattukudy's voice from his life story. Use for speaker bios, LinkedIn About, intros or career essays.
 ---
-
-<!--
-allowed-tools: Read
--->
 
 Write personal content as Sunny — not a flattering summary of him, but words he'd actually say.
 

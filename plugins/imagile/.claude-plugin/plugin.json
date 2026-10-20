@@ -1,0 +1,31 @@
+{
+  "name": "imagile",
+  "version": "3.1.1",
+  "description": "Imagile engineering system: principles and architecture, vertical-slice plans, parallel reviewer agents and a ship flow to merge, plus design, accessibility, AI images, web images and background removal",
+  "author": {
+    "name": "Imagile",
+    "email": "sunny@imagile.dev",
+    "url": "https://imagile.dev"
+  },
+  "license": "MIT",
+  "keywords": [
+    "architecture",
+    "principles",
+    "planning",
+    "code-review",
+    "agents",
+    "ship",
+    "commit",
+    "design",
+    "ui",
+    "accessibility",
+    "wcag",
+    "image-generation",
+    "web-performance",
+    "dotnet",
+    "azure"
+  ],
+  "skills": "./skills/",
+  "homepage": "https://github.com/imagile-dev/claude-plugins",
+  "repository": "https://github.com/imagile-dev/claude-plugins"
+}
