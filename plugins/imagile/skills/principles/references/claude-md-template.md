@@ -66,7 +66,7 @@ The commands every change passes before a PR opens, in order:
 ## Delivery
 
 - Every non-trivial change starts from an issue. Branch: `[user]/<issue#>-<desc>`.
-- Commits: Conventional Commits.
+- Commits: Conventional Commits with one gitmoji at the end of the title (release-please still parses the type).
 - Ship with `imagile:ship`: four local reviews, fix every finding in the round it
   arrives, open the PR with proof, then watch it to merge.
 - The PR description describes the PR as it is now. Rewrite it after each round.

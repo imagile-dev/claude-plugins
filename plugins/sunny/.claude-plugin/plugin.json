@@ -1,19 +1,20 @@
 {
   "name": "sunny",
   "version": "3.1.0",
-  "description": "Sunny's personal toolkit: writing in Sunny's voice, chat, identity, mentoring, hiring, engineering philosophy and conventional commits. Engineering workflow lives in the imagile plugin.",
+  "description": "Sunny Kolattukudy's personal skills: his voice for writing and bios, engineering philosophy, hiring, mentoring and default chat register",
   "author": {
-    "name": "kolatts"
+    "name": "Sunny Kolattukudy",
+    "email": "sunny@imagile.dev",
+    "url": "https://imagile.dev"
   },
   "license": "MIT",
   "keywords": [
     "writing",
     "voice",
-    "communication",
-    "mentoring",
+    "identity",
     "hiring",
-    "commit",
-    "identity"
+    "mentoring",
+    "engineering-culture"
   ],
   "skills": "./skills/",
   "hooks": {
@@ -27,5 +28,7 @@
         ]
       }
     ]
-  }
+  },
+  "homepage": "https://github.com/imagile-dev/claude-plugins",
+  "repository": "https://github.com/imagile-dev/claude-plugins"
 }

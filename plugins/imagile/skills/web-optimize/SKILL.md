@@ -1,11 +1,7 @@
 ---
-name: imagile:web-optimize
-description: Convert images into web-ready AVIF/WebP derivatives with responsive srcset widths and a legacy fallback, and decide whether that conversion is even worth doing. Use when someone says optimize images for web, compress images, convert to webp, convert to avif, make images smaller, responsive images, srcset, picture element, images are slowing down the page, reduce page weight, LCP, or asks about image formats for a website. Also use after generating an image that is headed for a site or app.
+name: web-optimize
+description: Convert images to AVIF and WebP with responsive srcset widths, and judge if it is worth it. Use to optimize, compress or resize images for a web page.
 ---
-
-<!--
-allowed-tools: Bash, Read, Glob, Grep, AskUserQuestion
--->
 
 Produce AVIF/WebP derivatives at responsive widths, with a legacy fallback and a ready `<picture>` block. Originals are never modified or deleted.
 

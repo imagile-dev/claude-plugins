@@ -1,11 +1,7 @@
 ---
-name: sunny:eng-philosophy
-description: Apply Sunny Kolattukudy's engineering philosophy frameworks to analyze team situations, answer hard questions, or draft thought leadership content. Use this skill when the user wants to think through engineering culture, team dynamics, software process, or leadership decisions — especially around priorities, metrics, accountability, learning culture, or team performance. Also trigger when someone asks "how should we run postmortems?", "our team is obsessed with velocity", "how do I get my team to focus?", "is story point estimation worth it?", or wants to write a talk or essay about engineering philosophy.
+name: eng-philosophy
+description: Apply Sunny Kolattukudy's engineering philosophy to team, process and leadership questions, or draft a talk on it. Use for culture, metrics, postmortems or focus.
 ---
-
-<!--
-allowed-tools: Read
--->
 
 Apply Sunny's engineering philosophy frameworks to diagnose situations, answer questions, and produce thought leadership content.
 
@@ -13,7 +9,7 @@ Apply Sunny's engineering philosophy frameworks to diagnose situations, answer q
 
 1. Read `../../voice/STYLE-GUIDE.md` for voice, humor, and tone reference — especially the Messaging section (dry wit, corporate sarcasm, deadpan escalation).
 2. Read `../identity/references/opinions.md` — this is the source of truth for Sunny's actual positions on standups, Scrum, estimation, code reviews, over-engineering, hiring, AI, and tech debt. Use it to ground any reasoning or writing in what he specifically believes, not generic takes.
-   Then read `references/staff-engineering.md` when the question is about impact, prioritization, career growth, technical leadership or what a senior engineer should be working on.
+   Then read `references/staff-engineering.md` when the question is about impact, prioritization, career growth, technical leadership or what a senior engineer should work on.
 3. Parse `$ARGUMENTS` to identify the mode:
    - **Question** — "how should we..." or "what do you think about..." → give a direct answer grounded in the frameworks
    - **Situation analysis** — "our team does X and it's causing Y" → diagnose the actual problem first, then prescribe

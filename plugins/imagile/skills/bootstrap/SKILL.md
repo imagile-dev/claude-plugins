@@ -1,6 +1,6 @@
 ---
-name: imagile:bootstrap
-description: Install the Imagile engineering system into a repository, or bring an existing repo up to it. Sets up the principles CLAUDE.md with an AGENTS.md symlink, AGENT_DECISIONS.md, the PR template, labels, and the Claude review and PR-feedback workflows where an approving bot review arms auto-merge. Use when someone says "set up this repo", "bootstrap", "add the review bot", "make this repo agent-ready", "bring this repo in line with toil", or starts a new Imagile repo.
+name: bootstrap
+description: Install the Imagile engineering system in a repo. Principles, labels, PR template, review bot, capped fix agent, auto-merge on approval. Use to set up or bootstrap a repo.
 ---
 
 # Bootstrap

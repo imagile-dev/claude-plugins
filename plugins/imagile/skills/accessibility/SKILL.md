@@ -1,11 +1,7 @@
 ---
-name: imagile:accessibility
-description: Audit a web page, app or static site for accessibility against WCAG 2.2 A and AA (what the ADA and Section 508 expect) with Deque's axe-core, then guide the fixes and re-verify. Runs real Chromium through Playwright at mobile and desktop widths, in light and dark color schemes and across named themes, and writes a JSON plus Markdown report. Use when someone says accessibility, a11y, ADA, Section 508, WCAG, axe, axe-core, Deque, screen reader, NVDA, VoiceOver, color contrast, contrast ratio, alt text, aria, focus order, keyboard navigation, audit my site, is this accessible, test my themes for contrast, or asks to add an accessibility check to CI.
+name: accessibility
+description: Audit a site or app for WCAG 2.2 AA with axe-core across widths, color schemes and themes, then guide fixes. Use for accessibility, a11y, contrast, ADA or Section 508 checks.
 ---
-
-<!--
-allowed-tools: Bash, Read, Glob, Grep, AskUserQuestion, mcp__claude-in-chrome__*, mcp__Claude_Browser__*, mcp__MCP_DOCKER__browser_*
--->
 
 Find accessibility problems with axe-core, fix them, and run axe again to prove the fix. axe catches roughly a third to a half of WCAG failures, so every audit ends with the manual checklist too. Never report a finding axe did not return or that nobody checked by hand.
 

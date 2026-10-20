@@ -1,6 +1,6 @@
 ---
-name: imagile:principles
-description: Write, sharpen and audit a repository's CLAUDE.md / AGENTS.md as a short list of principles that agents reason from, so they can work without asking about each decision. Use when someone says "set up CLAUDE.md", "write our principles", "agents keep asking me", "turn this correction into a rule", "why does it keep doing X", "our CLAUDE.md is too long", or corrects an agent in a way that reveals a pattern. Also use when a principle reviewer or the revisit skill says a principle is missing or wrong.
+name: principles
+description: Write, sharpen and audit a principle-first CLAUDE.md so agents decide without asking. Use to set up CLAUDE.md, turn a correction into a principle, or trim a long one.
 ---
 
 # Principles

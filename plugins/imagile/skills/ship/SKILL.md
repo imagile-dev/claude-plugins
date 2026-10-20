@@ -1,6 +1,6 @@
 ---
-name: imagile:ship
-description: Take the current branch to a merged PR on GitHub. Runs four or five reviewer agents in parallel (gate, code, docs, principles, and edge cases when the diff handles input), fixes every finding in the same round, logs principle gaps instead of asking, opens or updates the PR with proof, then watches it every four minutes and handles reviews, CI failures and conflicts until it merges or needs a human. Use for "ship this", "open a PR", "push the fix", "take this to merge", or after a slice is built.
+name: ship
+description: Take a branch to a merged PR. Rebase, run parallel reviewer agents, fix every finding, log principle gaps, open the PR with proof, watch it to merge. Use for ship this or open a PR.
 ---
 
 # Ship
@@ -28,7 +28,7 @@ follows the repo's policy in CLAUDE.md (Delivery).
   same logic and either choice loses behavior. On a branch someone else owns,
   merge `origin/<base>` in instead of rebasing.
 - **Read CLAUDE.md**, especially Principles, Autonomy, Gate and Delivery.
-- **Issue and branch.** Use the slice's issue (`Closes #n` or `Refs #n`). Branch
+- **Issue and branch.** Use the plan's issue (`Closes #n` or `Refs #n`). Branch
   per CLAUDE.md, default `<user>/<issue#>-<desc>`.
 - **Nothing stray.** `git status --porcelain` and `git diff --stat origin/<base>...HEAD`
   list only files that belong to this change.

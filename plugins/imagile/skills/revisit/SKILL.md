@@ -1,6 +1,6 @@
 ---
-name: imagile:revisit
-description: Walk the user through the decisions agents made on their own (AGENT_DECISIONS.md) in one fast batch, so each becomes a principle, gets reversed or is accepted and deleted. Also defines how agents record those decisions. Use when someone says "revisit", "what did the agents decide", "review decisions", "go through the decision log", "AGENT_DECISIONS is getting long", or after a burst of PRs merged.
+name: revisit
+description: Review the decisions agents logged in AGENT_DECISIONS.md in one batch, then keep, promote to a principle, or reverse each. Use for revisit or review decisions.
 ---
 
 # Revisit

@@ -1,0 +1,101 @@
+{
+  "skill_name": "imagile:plan",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "oauth2-login-epic",
+      "prompt": "Plan adding OAuth2 login to our app",
+      "expected_output": "Epic-sized plan with slices as sub-issues, vertical slices, files affected listed",
+      "assertions": [
+        {
+          "id": "sized_as_epic",
+          "description": "Plan is sized as an Epic",
+          "type": "regex",
+          "pattern": "(?i)\\bepic\\b"
+        },
+        {
+          "id": "has_story_stubs",
+          "description": "Epic is split into vertical slices tracked as sub-issues",
+          "type": "regex",
+          "pattern": "(?i)sub-issue"
+        },
+        {
+          "id": "has_phases",
+          "description": "Plan lists numbered slices",
+          "type": "regex",
+          "pattern": "(?i)(###\\s*[12]\\.|slice [12])"
+        },
+        {
+          "id": "has_files_affected",
+          "description": "Names the files or areas affected",
+          "type": "regex",
+          "pattern": "(?i)files"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "timezone-bug-story",
+      "prompt": "Plan fixing the bug where the license expiration date shows the wrong timezone",
+      "expected_output": "Story-sized plan, concise, end-user visible verification step",
+      "assertions": [
+        {
+          "id": "sized_as_story",
+          "description": "Plan is sized as a Story",
+          "type": "regex",
+          "pattern": "(?i)\\bstory\\b"
+        },
+        {
+          "id": "has_verification",
+          "description": "States how the work is verified",
+          "type": "regex",
+          "pattern": "(?i)verif"
+        },
+        {
+          "id": "user_visible_verification",
+          "description": "Verification is framed around user-visible behavior, not test names",
+          "type": "manual",
+          "criteria": "Does the Verification section describe what a user sees (e.g., 'the expiration date displays in the user's local timezone') rather than technical assertions (e.g., 'DateTime.UtcNow returns correct value')?"
+        },
+        {
+          "id": "no_walls_of_text",
+          "description": "Plan is concise — uses bullets, not paragraphs",
+          "type": "manual",
+          "criteria": "Is the plan primarily bulleted lists rather than prose paragraphs? Is it lean and scannable?"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "credential-summary-endpoint-story",
+      "prompt": "Plan adding a new endpoint to return provider credential summary",
+      "expected_output": "Story-sized plan, files affected listed, API/user-behavior verification",
+      "assertions": [
+        {
+          "id": "sized_as_story",
+          "description": "Plan is sized as a Story",
+          "type": "regex",
+          "pattern": "(?i)\\bstory\\b"
+        },
+        {
+          "id": "has_files_affected",
+          "description": "Names the files or areas affected",
+          "type": "regex",
+          "pattern": "(?i)files"
+        },
+        {
+          "id": "api_behavior_verification",
+          "description": "Verification is framed around API/user behavior, not test names",
+          "type": "manual",
+          "criteria": "Does the Verification section describe what an API consumer or user observes (e.g., 'the endpoint returns a summary object with X fields') rather than internal test assertions?"
+        },
+        {
+          "id": "has_goal",
+          "description": "Issue has a Done when line",
+          "type": "regex",
+          "pattern": "(?i)done when"
+        }
+      ]
+    }
+  ]
+}

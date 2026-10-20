@@ -1,25 +1,29 @@
 {
   "name": "imagile",
-  "version": "2.2.0",
-  "description": "Imagile engineering system: a principal track that sets a repo's principles and architecture, a development track where agents ship vertical slices through parallel reviewers and a PR watch, plus image generation, web image optimization and axe-core accessibility audits",
+  "version": "3.0.0",
+  "description": "Imagile engineering system: principles and architecture, vertical-slice plans, parallel reviewer agents and a ship flow to merge, plus accessibility, AI images, web images and background removal",
   "author": {
-    "name": "kolatts"
+    "name": "Imagile",
+    "email": "sunny@imagile.dev",
+    "url": "https://imagile.dev"
   },
   "license": "MIT",
   "keywords": [
-    "imagile",
     "architecture",
     "principles",
+    "planning",
     "code-review",
     "agents",
     "ship",
-    "pull-request",
-    "images",
-    "image-generation",
+    "commit",
     "accessibility",
-    "a11y",
     "wcag",
-    "axe-core"
+    "image-generation",
+    "web-performance",
+    "dotnet",
+    "azure"
   ],
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "homepage": "https://github.com/imagile-dev/claude-plugins",
+  "repository": "https://github.com/imagile-dev/claude-plugins"
 }

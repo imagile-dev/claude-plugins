@@ -1,73 +1,70 @@
 ---
-name: imagile:architecture
-description: Design, review or evaluate a system against Imagile's architecture principles, then read the stack reference that fits (.NET/Blazor/Azure or Node/TypeScript) and Azure resource naming. Use when someone asks "how should I structure X", "design a module for Y", "review this architecture", "should this be a service?", "what's the right project layout", "is this the right pattern?", or asks about module boundaries, cross-module communication, EF Core patterns, Blazor state, testing stack, data seeding, CLI tooling, cloud hosting, Bicep or Azure resource names. Also use when a code review finding touches an architectural decision.
+name: architecture
+description: Design or review a system with Imagile's opinions on .NET, Blazor, TypeScript, Astro and Azure. Use for structure, module boundaries, hosting, Azure naming or cost, and tech choices.
 ---
 
 # Architecture
 
-Opinionated architecture for Imagile work. The principles below hold for every
-stack. The references hold the stack-specific rules that follow from them.
+Give an opinionated design or review, grounded in the stack below. Recommend one option, and say what it optimizes for. Do not survey every option.
 
-## Principles
+## 1. Understand the problem
 
-1. **Radically obvious, and simple until users force a compromise.** Code and
-   design a newcomer understands on the first pass. Stay with the simplest
-   option until keeping it would compromise what users experience: behavior,
-   correctness or performance they feel. Hypothetical scale, future flexibility
-   and taste never justify complexity. No abstraction exists for one use case.
-2. **Modular monolith first.** Extract a service only when its load profile, its
-   deploy cadence or its owning team is genuinely separate. Late is right.
-3. **Slice by feature, not by layer.** A feature folder holds its pages,
-   components, endpoints and services together. A folder named for a layer
-   ("Services", "Repositories") at the root is a smell.
-4. **Adding a feature never edits a shared list.** Registration happens by
-   existing (convention, generated index, assembly scan), so parallel agents and
-   people never conflict on one file. A shared hotspot is a design finding.
-5. **Talk across modules through contracts you can see.** An HTTP API first. A
-   queue when decoupling matters more than latency. One consumer: a storage queue
-   and a function. Many consumers: an event service. No in-process eventing, no
-   mediator, no cross-module shared state.
-6. **No indirection over the framework.** No repository over the ORM, no mapper
-   library, no command/handler pattern. Query composition and direct mapping are
-   shorter and show the real cost.
-7. **First-party before third-party.** Write it in under 100 lines, or use the
-   platform's own package. A third-party package needs a real feature advantage
-   and a license check.
-8. **Everything is verifiable by a machine.** Seed data that is deterministic,
-   E2E tests at desktop and 375px, a CLI for every dev operation, and an alert
-   for every failure a person would otherwise not see.
+Before you propose anything, answer these:
 
-## Steps
+- **What problem does it solve, and for whom?** The answer sets the boundary.
+- **Who owns it?** If the team boundary and the system boundary differ, say so plainly.
+- **Can it deploy and test on its own?** If not, the boundary is probably wrong.
+- **What does it cost each month?** Include always-on resources (see `references/azure.md`).
 
-1. **Find the problem first.** What does this solve, for whom, and who owns it?
-   If the team boundary and the system boundary disagree, say so plainly.
-2. **Read the repo's own CLAUDE.md or AGENTS.md.** Its principles win over these
-   defaults. Note any place they disagree.
-3. **Read the reference for the stack:**
-   - `references/dotnet-blazor.md`: .NET, Blazor WASM, EF Core, Azure Functions,
-     testing, seeding, CLI, naming of projects
-   - `references/node-ts.md`: TypeScript CLIs, MCP servers, React/Vite UIs
-   - `references/azure-naming.md`: Azure resource names and Bicep
-4. **Name what you're optimizing for.** Before recommending, state the one or
-   two qualities this decision optimizes (for example obviousness, time to ship,
-   user-felt latency, cost, operability) and what it gives up for them. Every
-   alternative is weighed on the same axes.
-5. **Answer.** Recommendation first, then the trade-offs, then the evidence. Use
-   `Company.App.*` placeholder names, never client names.
+For a review, read the design or code first. Then apply the rules.
 
-## Output
+## 2. The non-negotiables
+
+- **Radically obvious, and simple until users force a compromise.** Code and design a newcomer understands on the first read. Keep the simplest option until it would compromise what users experience: behavior, correctness or performance they feel. Hypothetical scale, future flexibility and taste never justify complexity.
+- **Name the trade-off.** Every recommendation says what it optimizes for and what it gives up.
+- **Modular monolith first.** Extract a service only when its load, its owner or its release cadence is independent. Late is right.
+- **No new infrastructure unless it is unavoidable.** Reuse the database, storage and hosts that exist. Ask before you add a resource.
+- **Serverless and static by default.** Small APIs go on Azure Functions with Table Storage or SQL. Sites go on GitHub Pages (Astro).
+- **No repository, unit-of-work or mediator.** Services take the `DbContext` directly. Controllers call services.
+- **Write it before you depend on it.** Use the platform first (`System.Text.Json`, `HttpClient`, `Microsoft.Extensions.*`, Node built-ins). Offer a third-party package only for a real feature gap, with its license.
+- **Pin dependencies exactly**, and add only versions at least 14 days old. Pin GitHub Actions to a commit SHA.
+- **No secrets in files.** Use OIDC for CI, managed identity in the cloud, and Key Vault or the OS credential store for the rest. Never an API key where federation works.
+- **Cost is a gate.** State the monthly cost before you create a resource. Tear down trial infrastructure in the same piece of work.
+- **Mobile responsive is part of done.** Test at 375px and desktop.
+- **Errors are honest.** Say what failed and how to fix it. Nothing fails silently.
+
+## 3. Stack references
+
+Read only the file the task needs:
+
+| File | Covers |
+|------|--------|
+| `references/dotnet.md` | Solution layout, EF Core and SQL, DTOs, DI, config, testing, CLI, seeding |
+| `references/azure.md` | Hosting choices, Bicep, Imagile resource naming and its 1 to 5 score, cost, CI/CD |
+| `references/web.md` | TypeScript and Node tools, Astro sites, front-end defaults |
+| `references/principles.md` | Module boundaries, cross-module calls, when to extract a service |
+
+## 4. Output
+
+Use generic `Company.App.*` names in examples. Never use a real client name. Link to docs. Do not copy them.
 
 ```
 ## Architecture: [name]
 
-### Recommendation      (for a review: Assessment, then Concerns)
-[What to build, where it lives, how it's structured.]
+### Problem
+[One sentence.]
+
+### Recommendation
+[What to build, where it lives, how it is structured.]
 
 ### Optimizing for
-[The one or two qualities this optimizes, and what it gives up. One line each.]
+[The one or two qualities this favors (obviousness, time to ship, user-felt latency, cost, operability), and what it gives up.]
 
 ### Structure
-[Project and folder layout, key files.]
+[Projects, folders, key files.]
+
+### Cost
+[Monthly run rate of anything new, or "no new resources".]
 
 ### Trade-offs
 | Option | Gains | Costs | Forced by a user need? |
@@ -75,16 +72,10 @@ stack. The references hold the stack-specific rules that follow from them.
 | [Recommended] | | | |
 | [Alternative] | | | |
 
-The recommended option is the simplest one whose costs users never feel. If a
-more complex option wins, name the user behavior that forces it.
-
-### Ownership
-[Who owns it, and whether the boundary matches.]
-
-### Verification
-[How it is deployed and tested on its own. Which checks prove it.]
+### Ownership and independence
+[Who owns it. How it deploys and tests on its own.]
 ```
 
-When a decision here is not covered by a principle and the user isn't in the
-loop, take the simplest option and record it in `AGENT_DECISIONS.md` with what
-it optimizes for (see the `imagile:revisit` skill). Don't stop to ask.
+The recommended option is the simplest one whose costs users never feel. If a more complex option wins, name the user behavior that forces it.
+
+For a review, replace **Recommendation** with **Assessment**, and add **Concerns** before **Trade-offs**. For an Azure naming review, add the **Infra naming** block from `references/azure.md`.

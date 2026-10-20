@@ -1,28 +1,26 @@
 {
-  "name": "kolatts-marketplace",
-  "version": "1.0.0",
-  "description": "Personal Claude Code plugin marketplace by kolatts",
-  "owner": { "name": "kolatts" },
-  "repository": "https://github.com/kolatts/claude-marketplace",
-  "keywords": ["workflow", "productivity", "writing", "communication", "azure", "infrastructure"],
+  "name": "imagile",
+  "owner": {
+    "name": "Imagile",
+    "email": "sunny@imagile.dev",
+    "url": "https://imagile.dev"
+  },
+  "metadata": {
+    "description": "Claude Code plugins from Imagile. Open source: use them, fork them, tell us what breaks.",
+    "version": "2.0.0"
+  },
   "plugins": [
-    {
-      "name": "sunny",
-      "source": "./plugins/sunny",
-      "description": "Sunny's personal toolkit: writing in Sunny's voice, chat, identity, mentoring, hiring, engineering philosophy and conventional commits",
-      "keywords": ["writing", "voice", "communication", "mentoring", "hiring", "commit"]
-    },
-    {
-      "name": "tools",
-      "source": "./plugins/tools",
-      "description": "General-purpose utility skills — standalone tools for image processing, file manipulation, and other everyday tasks",
-      "keywords": ["utilities", "images", "background-removal", "file-processing"]
-    },
     {
       "name": "imagile",
       "source": "./plugins/imagile",
-      "description": "Imagile engineering system: principles and architecture (principal track), vertical slices shipped through parallel reviewer agents and a PR watch (development track), plus image generation, web image optimization and accessibility audits",
-      "keywords": ["imagile", "architecture", "principles", "agents", "code-review", "ship", "images", "accessibility", "a11y", "wcag"]
+      "description": "Imagile engineering system: principles and architecture, vertical-slice plans, parallel reviewer agents and a ship flow to merge, plus accessibility, AI images, web images and background removal",
+      "category": "development"
+    },
+    {
+      "name": "sunny",
+      "source": "./plugins/sunny",
+      "description": "Sunny Kolattukudy's personal skills: his voice for writing and bios, engineering philosophy, hiring, mentoring and default chat register",
+      "category": "productivity"
     }
   ]
 }
