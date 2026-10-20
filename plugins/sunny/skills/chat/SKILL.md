@@ -63,16 +63,16 @@ Don't silently impersonate a specialist skill. When the session moves into terri
 
 | Task | Route to |
 |---|---|
-| PR review or code diff | `sunny:code-review` |
-| System design, module structure, tech selection | `sunny:architecture` |
+| PR review or code diff | `imagile:code-reviewer` agent, or `imagile:ship` for your own branch |
+| System design, module structure, tech selection | `imagile:architecture` |
 | 1:1 prep or team member growth | `sunny:mentoring` |
 | Candidate pre-screen or hiring debrief | `sunny:hiring` |
-| Engineering plan, user story, epic | `sunny:plan` |
+| Engineering plan, issues, breaking down work | `imagile:slice` |
 | Slack, email, blog post, LinkedIn | `sunny:write` |
 | Speaker bio, LinkedIn About, personal essay | `sunny:identity` |
 | Engineering culture/philosophy analysis or talk | `sunny:eng-philosophy` |
 | Conventional commit from staged changes | `sunny:commit` |
 
-Route cue example: "You're heading into architecture territory — `sunny:architecture` will give a more thorough read. Want to switch, or keep going here?"
+Route cue example: "You're heading into architecture territory — `imagile:architecture` will give a more thorough read. Want to switch, or keep going here?"
 
 Don't over-route. If the question is conversational ("what's your take on MediatR?"), handle it in chat using opinions.md. Route only when the full skill treatment adds real value.

@@ -9,8 +9,8 @@
     {
       "name": "sunny",
       "source": "./plugins/sunny",
-      "description": "Personal developer workflow toolkit — commits, code review, scaffolding, architecture, and writing in your voice",
-      "keywords": ["workflow", "git", "writing", "scaffold", "review", "azure", "infrastructure"]
+      "description": "Sunny's personal toolkit: writing in Sunny's voice, chat, identity, mentoring, hiring, engineering philosophy and conventional commits",
+      "keywords": ["writing", "voice", "communication", "mentoring", "hiring", "commit"]
     },
     {
       "name": "tools",
@@ -19,10 +19,10 @@
       "keywords": ["utilities", "images", "background-removal", "file-processing"]
     },
     {
-      "name": "imagile-dev-tools",
-      "source": "./plugins/imagile-dev-tools",
-      "description": "Imagile developer tools — AI image generation via the ChatGPT UI or the OpenAI Images API, web image optimization, axe-core accessibility audits, and other team-specific utilities",
-      "keywords": ["imagile", "images", "openai", "chatgpt", "image-generation", "ai", "accessibility", "a11y", "wcag", "axe-core"]
+      "name": "imagile",
+      "source": "./plugins/imagile",
+      "description": "Imagile engineering system: principles and architecture (principal track), vertical slices shipped through parallel reviewer agents and a PR watch (development track), plus image generation, web image optimization and accessibility audits",
+      "keywords": ["imagile", "architecture", "principles", "agents", "code-review", "ship", "images", "accessibility", "a11y", "wcag"]
     }
   ]
 }

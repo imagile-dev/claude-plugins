@@ -1,5 +1,5 @@
 ---
-name: imagile-dev-tools:accessibility
+name: imagile:accessibility
 description: Audit a web page, app or static site for accessibility against WCAG 2.2 A and AA (what the ADA and Section 508 expect) with Deque's axe-core, then guide the fixes and re-verify. Runs real Chromium through Playwright at mobile and desktop widths, in light and dark color schemes and across named themes, and writes a JSON plus Markdown report. Use when someone says accessibility, a11y, ADA, Section 508, WCAG, axe, axe-core, Deque, screen reader, NVDA, VoiceOver, color contrast, contrast ratio, alt text, aria, focus order, keyboard navigation, audit my site, is this accessible, test my themes for contrast, or asks to add an accessibility check to CI.
 ---
 

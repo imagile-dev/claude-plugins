@@ -12,7 +12,7 @@ Personal Claude Code plugin marketplace — a curated collection of plugins for 
 
 ### sunny
 
-A personal developer workflow toolkit. Skills that cover commits, code review, project scaffolding, and writing in your voice.
+Sunny's personal toolkit: writing in Sunny's voice, conversation, and the people side of engineering leadership. Engineering workflow lives in `imagile`.
 
 ```bash
 /plugin install sunny@kolatts-marketplace
@@ -23,14 +23,11 @@ A personal developer workflow toolkit. Skills that cover commits, code review, p
 | Skill | Command | Description |
 |-------|---------|-------------|
 | Smart Commit | `/sunny:commit` | Analyze changes and generate a conventional commit message |
-| Code Review | `/sunny:code-review` | Review code with .NET/Blazor patterns and Sunny's voice |
-| Scaffold | `/sunny:scaffold <type>` | Scaffold a new project (react, node-ts, dotnet, python) |
-| Writing | `/sunny:write` | Draft anything — Slack messages, emails, proposals, blog posts, LinkedIn articles |
+| Writing | `/sunny:write` | Draft anything: Slack messages, emails, proposals, blog posts, LinkedIn articles |
+| Chat | `/sunny:chat` | Talk it through in Sunny's voice, routing to a specialist skill when one fits |
 | Identity | `/sunny:identity` | Write personal bios, speaker profiles, and LinkedIn About sections |
-| Planning | `/sunny:plan` | Draft Stories and Epics with JIRA-ready structure |
 | Mentoring | `/sunny:mentoring` | Prep 1:1s and growth conversations |
 | Hiring | `/sunny:hiring` | Pre-screen candidates and structure hiring debriefs |
-| Architecture | `/sunny:architecture` | Design and review systems against Sunny's .NET/Azure architecture principles |
 | Eng Philosophy | `/sunny:eng-philosophy` | Apply engineering philosophy frameworks to team and culture questions |
 
 ### tools
@@ -47,21 +44,47 @@ General-purpose utility skills — standalone tools for image processing, file m
 |-------|---------|-------------|
 | Background Removal | `/tools:background-removal` | Remove image backgrounds locally with Python + rembg — single file or folder, fully offline |
 
-### imagile-dev-tools
+### imagile
 
-Imagile developer tools — AI image generation via the ChatGPT UI or the OpenAI Images API, web image optimization, axe-core accessibility audits, and other team-specific utilities.
+The Imagile engineering system. A repo's `CLAUDE.md` (with an `AGENTS.md` symlink) sets a few core principles. Agents work inside them without asking about each decision, log the calls the principles don't settle in `AGENT_DECISIONS.md`, and the maintainer revisits that log in batches. Quality comes from deterministic gates, narrow reviewer agents that run in parallel and back findings with real runs, and proof in every PR.
 
 ```bash
-/plugin install imagile-dev-tools@kolatts-marketplace
+/plugin install imagile@kolatts-marketplace
 ```
 
-#### Skills
+#### Principal track: decide what's true
 
 | Skill | Command | Description |
 |-------|---------|-------------|
-| Image Generation | `/imagile-dev-tools:image-generation` | Generate or edit images from a prompt — through the ChatGPT UI when Claude in Chrome is connected, otherwise the OpenAI Images API (`gpt-image-2`) |
-| Web Optimize | `/imagile-dev-tools:web-optimize` | Convert images to AVIF/WebP with responsive `srcset` widths and a `<picture>` snippet |
-| Accessibility | `/imagile-dev-tools:accessibility` | Audit pages for WCAG 2.2 A/AA with Deque's axe-core across mobile and desktop widths, light and dark, and named themes; guide fixes and re-verify |
+| Principles | `/imagile:principles` | Write, sharpen and audit a repo's principle-first `CLAUDE.md`; turn corrections into principles |
+| Revisit | `/imagile:revisit` | Review the agents' open decisions in one batch: keep, promote to a principle, or reverse |
+| Architecture | `/imagile:architecture` | Design and review systems against Imagile's principles, with .NET/Blazor, Node/TypeScript and Azure naming references |
+
+#### Development track: ship inside the principles
+
+| Skill | Command | Description |
+|-------|---------|-------------|
+| Slice | `/imagile:slice` | Turn ideas into vertical-slice GitHub issues that own their files, so agents build them in parallel without conflicts |
+| Ship | `/imagile:ship` | Parallel reviewer agents, fix every finding in one round, open the PR with proof, watch it to merge |
+| Bootstrap | `/imagile:bootstrap` | Install the system in a repo: principles, labels, PR template, review bot, capped fix agent, auto-merge on approval |
+
+#### Reviewer agents
+
+| Agent | Checks |
+|-------|--------|
+| `gate-reviewer` | Runs the repo's Gate and checks for stray files |
+| `code-reviewer` | Correctness, security, performance at scale, needless complexity, missing tests, rule breaks |
+| `edge-case-reviewer` | Runs hostile inputs against code that parses, does IO, handles time, or takes user input |
+| `docs-reviewer` | Stale and missing docs, PR description drift, leaked hostnames |
+| `principle-reviewer` | Sorts each principle the change touches into breaks (fix), gaps (log) and stops (ask) |
+
+#### Utilities
+
+| Skill | Command | Description |
+|-------|---------|-------------|
+| Image Generation | `/imagile:image-generation` | Generate or edit images from a prompt — through the ChatGPT UI when Claude in Chrome is connected, otherwise the OpenAI Images API (`gpt-image-2`) |
+| Web Optimize | `/imagile:web-optimize` | Convert images to AVIF/WebP with responsive `srcset` widths and a `<picture>` snippet |
+| Accessibility | `/imagile:accessibility` | Audit pages for WCAG 2.2 A/AA with Deque's axe-core across mobile and desktop widths, light and dark, and named themes; guide fixes and re-verify |
 
 Image generation takes the browser route first: with [Claude in Chrome](https://code.claude.com/docs/en/chrome) connected (`claude --chrome`), it drives chatgpt.com in a logged-in tab, so images come out of the ChatGPT plan rather than being billed per image. It falls back to the API — transparent backgrounds, exact pixel sizes, masked edits and batches always go that way. Set `OPENAI_API_KEY` (or `IMAGILE_OPENAI_API_KEY`) and the skill picks it up automatically; otherwise it asks for a key at use time.
 

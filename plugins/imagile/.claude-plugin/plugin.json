@@ -1,0 +1,25 @@
+{
+  "name": "imagile",
+  "version": "2.0.0",
+  "description": "Imagile engineering system: a principal track that sets a repo's principles and architecture, a development track where agents ship vertical slices through parallel reviewers and a PR watch, plus image generation, web image optimization and axe-core accessibility audits",
+  "author": {
+    "name": "kolatts"
+  },
+  "license": "MIT",
+  "keywords": [
+    "imagile",
+    "architecture",
+    "principles",
+    "code-review",
+    "agents",
+    "ship",
+    "pull-request",
+    "images",
+    "image-generation",
+    "accessibility",
+    "a11y",
+    "wcag",
+    "axe-core"
+  ],
+  "skills": "./skills/"
+}

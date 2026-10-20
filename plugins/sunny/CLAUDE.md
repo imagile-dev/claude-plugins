@@ -10,13 +10,15 @@
 - **Commit format:** Conventional type + short imperative title + gitmoji at end. No body.
   - Example: `feat: add OAuth login 🔐`
   - Full gitmoji list: https://gitmoji.dev/
-- **Branch naming:** `<githubusername>/<YYMMdd>-short-desc` or `<githubusername>/<JIRA-key>-short-desc`
-  - Example: `sunnyatverifiable/260323-add-oauth` or `sunnyatverifiable/ENG-123-add-oauth`
-- **NEVER commit or push without explicit user review and approval.** Always show the exact command and wait for confirmation. Do not proceed without it.
+- **Branch naming:** follow the repo's CLAUDE.md. Default: `<githubusername>/<issue#>-short-desc`, or `<githubusername>/<JIRA-key>-short-desc` for Jira work
+  - Example: `kolatts/142-add-oauth` or `sunnyatverifiable/ENG-123-add-oauth`
+- **In a repo whose CLAUDE.md has an Autonomy section, agents commit, push and open PRs on their own** through `imagile:ship`, and merging follows the repo's policy. Decisions the principles don't settle go in `AGENT_DECISIONS.md`, not in a question.
+- **Anywhere else, never commit or push without explicit approval.** Show the exact command and wait.
 - **Never force-push `main` or `master`.**
 
 ## Self-Correction Rules
 
+- **Find the principle under a correction.** In a repo with principles, use `imagile:principles` to sharpen the principle and every rule that follows from it, not just the one instance.
 - **Skills are self-healing.** If a skill encounters an issue (wrong output, bad assumptions, broken flow), fix the skill file immediately after resolving it — don't just patch the current response and move on.
 - **CLAUDE.md is a living document.** Every correction the user makes that reveals a pattern (preference, workflow, constraint) should be captured here or in the relevant skill. Don't wait to be asked.
 - **This applies to both repo-scoped and user-scoped skills.** If the fix belongs in `~/.claude/`, update it there. If it belongs in the plugin, update it there.

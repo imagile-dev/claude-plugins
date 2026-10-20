@@ -1,5 +1,5 @@
 ---
-name: imagile-dev-tools:image-generation
+name: imagile:image-generation
 description: Generate or edit images from a text prompt — first through the ChatGPT UI at chatgpt.com when Claude in Chrome is connected, otherwise through the OpenAI Images API (gpt-image-2). Use when someone says generate an image, create an image, make a picture, AI image, text to image, draw me, render an illustration, generate a logo/icon/hero image/mockup/placeholder art, image from prompt, ChatGPT image, DALL-E, gpt-image, or asks to edit, inpaint, or restyle an existing image with a prompt. Also triggers for transparent-background asset generation and batch variations of a prompt.
 ---
 
@@ -218,7 +218,7 @@ Both scripts do this by default — one folder per run, named `YYMMDD-short-prom
 
 ## After generating: is this headed for the web?
 
-Both routes return PNG, which is a fine master and a bad thing to ship. If the image is going onto a site or app, hand off to the `imagile-dev-tools:web-optimize` skill to produce AVIF/WebP derivatives — the run folder keeps the PNG master, and `web/` gets the served files.
+Both routes return PNG, which is a fine master and a bad thing to ship. If the image is going onto a site or app, hand off to the `imagile:web-optimize` skill to produce AVIF/WebP derivatives — the run folder keeps the PNG master, and `web/` gets the served files.
 
 Assess before acting, don't optimize reflexively. A slide graphic, a print asset, a mockup, or an image the user just wants to look at should stay a PNG. That skill carries the full decision framework; the short version is that a web project plus a real payoff means yes, and anything else means mention it and move on.
 
