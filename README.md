@@ -60,10 +60,13 @@ A repo's `CLAUDE.md` (with an `AGENTS.md` symlink) holds a few core principles. 
 
 | Skill | What it does |
 |-------|--------------|
+| `/imagile:design` | Brief, build, critique and polish for UI, decks and image sets: surface modes, color strategy, motion rules, a dated list of generated-design tells, and a screenshot critique scored out of 40 |
 | `/imagile:accessibility` | WCAG 2.2 AA audit with axe-core at mobile and desktop widths, light and dark, and every theme |
 | `/imagile:image-generation` | Images from a prompt through ChatGPT in Chrome, or the OpenAI Images API |
 | `/imagile:web-optimize` | AVIF and WebP with responsive `srcset`, only when it is worth it |
 | `/imagile:background-removal` | Offline background removal with rembg |
+
+**Design** keeps each project's decisions in a `DESIGN.md` at the repo root, so the next session follows them instead of asking again. A correction from you becomes a standing rule there. It builds on Anthropic's `frontend-design`, Impeccable, Emil Kowalski's skills and taste-skill; each reference file credits its sources.
 
 **Image generation** drives chatgpt.com when [Claude in Chrome](https://code.claude.com/docs/en/chrome) is connected, so images come from the ChatGPT plan. Otherwise it uses the API with `OPENAI_API_KEY`. Transparent backgrounds, exact sizes, masked edits and batches always use the API. Each run is kept under `.claude/image-generation/<yymmdd-slug>/` with its prompt, and a shared `style.md` holds the palette.
 
@@ -75,6 +78,7 @@ A repo's `CLAUDE.md` (with an `AGENTS.md` symlink) holds a few core principles. 
 |-------|--------------|
 | `/sunny:chat` | Sunny's default register and context |
 | `/sunny:write` | Slack, email, proposals, blog and LinkedIn posts in Sunny's voice |
+| `/sunny:taste` | Sunny's visual taste and standing design corrections, on top of `/imagile:design` |
 | `/sunny:identity` | Bios, speaker profiles and personal essays |
 | `/sunny:eng-philosophy` | Team, process and leadership questions through the Phoenix Project, Agile values and staffeng.com, or a talk on them |
 | `/sunny:hiring` | Candidate pre-screens and hiring debriefs |

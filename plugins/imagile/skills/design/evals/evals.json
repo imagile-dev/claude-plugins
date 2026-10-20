@@ -1,0 +1,83 @@
+{
+  "skill_name": "imagile:design",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "landing-page-brief",
+      "prompt": "Design a landing page for a time-tracking tool for freelance illustrators",
+      "expected_output": "A short brief before any code: design read, Persuade mode with dials, a scene sentence, an idea sentence that passes the competitor test, named color tokens with a strategy, type roles, and a check against the tells",
+      "assertions": [
+        {
+          "id": "names_mode",
+          "description": "Picks a surface mode",
+          "type": "regex",
+          "pattern": "(?i)\\bpersuade\\b"
+        },
+        {
+          "id": "has_idea_sentence",
+          "description": "States an idea and runs the competitor test",
+          "type": "regex",
+          "pattern": "(?i)competitor"
+        },
+        {
+          "id": "has_color_strategy",
+          "description": "Chooses a color strategy before swatches",
+          "type": "regex",
+          "pattern": "(?i)(restrained|committed|full palette|drenched)"
+        },
+        {
+          "id": "writes_design_md",
+          "description": "Records the decisions in DESIGN.md",
+          "type": "regex",
+          "pattern": "DESIGN\\.md"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "dashboard-critique",
+      "prompt": "Critique the settings page of our admin dashboard and tell me what to fix first",
+      "expected_output": "Screenshots at mobile and desktop widths, a Nielsen score out of 40 with a band, P0 to P3 findings in a table, and the single next change",
+      "assertions": [
+        {
+          "id": "scores_out_of_40",
+          "description": "Scores the heuristics out of 40",
+          "type": "regex",
+          "pattern": "/40"
+        },
+        {
+          "id": "uses_severity",
+          "description": "Ranks findings by severity",
+          "type": "regex",
+          "pattern": "\\bP[0-3]\\b"
+        },
+        {
+          "id": "checks_mobile",
+          "description": "Looks at a mobile width",
+          "type": "regex",
+          "pattern": "375"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "animate-command-palette",
+      "prompt": "Add a nice open and close animation to our command palette",
+      "expected_output": "Applies the frequency gate: a command palette opened many times a day from the keyboard should not animate, or barely. Explains why and offers an alternative",
+      "assertions": [
+        {
+          "id": "applies_frequency_gate",
+          "description": "Raises how often the palette is used",
+          "type": "regex",
+          "pattern": "(?i)(frequen|times a day|keyboard)"
+        },
+        {
+          "id": "recommends_no_or_minimal_motion",
+          "description": "Recommends no animation or near-instant motion",
+          "type": "regex",
+          "pattern": "(?i)(no animation|not animate|instant|without animation)"
+        }
+      ]
+    }
+  ]
+}

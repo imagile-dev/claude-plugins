@@ -22,6 +22,7 @@
 - At most two type families. Cards in a grid share a height. Never tilt anything clickable.
 - Images ship as AVIF or WebP with a fallback (the `web-optimize` skill). Decorative art is a transparent cutout.
 - Accessibility target is WCAG 2.2 AA with zero axe violations on the main themes (the `accessibility` skill).
+- Visual design (type, color, layout, motion, imagery, critique) follows the `design` skill.
 - Status labels are honest: "alpha", "planned" and "verified" mean what they say.
 
 ## Public endpoints
