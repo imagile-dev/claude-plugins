@@ -21,7 +21,7 @@
 
 ```text
 /plugin marketplace add imagile-dev/claude-plugins
-/plugin install imagile-dev-tools@imagile
+/plugin install imagile@imagile
 ```
 
 `sunny` is Sunny Kolattukudy's personal plugin. It is public so you can read it or borrow its shape, but it writes as Sunny.
@@ -30,20 +30,40 @@
 /plugin install sunny@imagile
 ```
 
-## imagile-dev-tools
+## imagile
 
 How Imagile designs, plans, reviews and ships, plus the tools we reach for on web work.
 
+A repo's `CLAUDE.md` (with an `AGENTS.md` symlink) holds a few core principles. Agents work inside them without asking about each decision. A choice the principles do not settle goes in `AGENT_DECISIONS.md` with what it optimizes for and what it gives up, and the maintainer reviews the log in batches. Quality comes from deterministic gates, narrow reviewer agents that back findings with real runs, and proof in every PR.
+
+**Principal track: decide what is true**
+
 | Skill | What it does |
 |-------|--------------|
-| `/imagile-dev-tools:architecture` | Opinionated design and review for .NET, Blazor, TypeScript, Astro and Azure: modular monolith first, no repository or mediator, CAF naming, cost as a gate |
-| `/imagile-dev-tools:plan` | Sizes work, slices it vertically, and files a short GitHub issue with a "Done when" line |
-| `/imagile-dev-tools:code-review` | Approve or Request Changes, with Major, Minor and Nit findings from three parallel reviewers |
-| `/imagile-dev-tools:commit` | Conventional Commit for what is staged, with a check for stray files |
-| `/imagile-dev-tools:accessibility` | WCAG 2.2 AA audit with axe-core at mobile and desktop widths, light and dark, and every theme |
-| `/imagile-dev-tools:image-generation` | Images from a prompt through ChatGPT in Chrome, or the OpenAI Images API |
-| `/imagile-dev-tools:web-optimize` | AVIF and WebP with responsive `srcset`, only when it is worth it |
-| `/imagile-dev-tools:background-removal` | Offline background removal with rembg |
+| `/imagile:principles` | Writes, sharpens and audits a principle-first `CLAUDE.md`, and turns corrections into principles |
+| `/imagile:revisit` | Reviews the agents' logged decisions in one batch: keep, promote to a principle, or reverse |
+| `/imagile:architecture` | Opinionated design and review for .NET, Blazor, TypeScript, Astro and Azure: radically obvious and simple until users force a compromise, named trade-offs, modular monolith first, Imagile resource naming, cost as a gate |
+
+**Development track: ship inside the principles**
+
+| Skill | What it does |
+|-------|--------------|
+| `/imagile:plan` | Sizes work, slices it vertically with owned files and edge cases, and files a short GitHub issue with a "Done when" line |
+| `/imagile:ship` | Rebases onto the target, runs the reviewer agents in parallel, fixes every finding, opens the PR with proof, and watches it to merge |
+| `/imagile:code-review` | Approve or Request Changes, with Major, Minor and Nit findings from the reviewer agents |
+| `/imagile:commit` | Conventional Commit with a gitmoji at the end (release-please safe), with a check for stray files |
+| `/imagile:bootstrap` | Installs the system in a repo: principles, labels, PR template, review bot, capped fix agent, auto-merge on approval |
+
+**Reviewer agents:** `gate-reviewer`, `code-reviewer`, `edge-case-reviewer`, `docs-reviewer`, `principle-reviewer`.
+
+**Web tools**
+
+| Skill | What it does |
+|-------|--------------|
+| `/imagile:accessibility` | WCAG 2.2 AA audit with axe-core at mobile and desktop widths, light and dark, and every theme |
+| `/imagile:image-generation` | Images from a prompt through ChatGPT in Chrome, or the OpenAI Images API |
+| `/imagile:web-optimize` | AVIF and WebP with responsive `srcset`, only when it is worth it |
+| `/imagile:background-removal` | Offline background removal with rembg |
 
 **Image generation** drives chatgpt.com when [Claude in Chrome](https://code.claude.com/docs/en/chrome) is connected, so images come from the ChatGPT plan. Otherwise it uses the API with `OPENAI_API_KEY`. Transparent backgrounds, exact sizes, masked edits and batches always use the API. Each run is kept under `.claude/image-generation/<yymmdd-slug>/` with its prompt, and a shared `style.md` holds the palette.
 
@@ -56,7 +76,7 @@ How Imagile designs, plans, reviews and ships, plus the tools we reach for on we
 | `/sunny:chat` | Sunny's default register and context |
 | `/sunny:write` | Slack, email, proposals, blog and LinkedIn posts in Sunny's voice |
 | `/sunny:identity` | Bios, speaker profiles and personal essays |
-| `/sunny:eng-philosophy` | Team, process and leadership questions, or a talk on them |
+| `/sunny:eng-philosophy` | Team, process and leadership questions through the Phoenix Project, Agile values and staffeng.com, or a talk on them |
 | `/sunny:hiring` | Candidate pre-screens and hiring debriefs |
 | `/sunny:mentoring` | 1:1 prep and growth conversations |
 

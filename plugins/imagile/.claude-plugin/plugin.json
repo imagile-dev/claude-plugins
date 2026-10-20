@@ -1,7 +1,7 @@
 {
-  "name": "imagile-dev-tools",
-  "version": "2.0.0",
-  "description": "Developer skills from Imagile: architecture, planning, commits and code review, plus accessibility audits, AI images, web image optimization and background removal",
+  "name": "imagile",
+  "version": "3.0.0",
+  "description": "Imagile engineering system: principles and architecture, vertical-slice plans, parallel reviewer agents and a ship flow to merge, plus accessibility, AI images, web images and background removal",
   "author": {
     "name": "Imagile",
     "email": "sunny@imagile.dev",
@@ -10,8 +10,11 @@
   "license": "MIT",
   "keywords": [
     "architecture",
+    "principles",
     "planning",
     "code-review",
+    "agents",
+    "ship",
     "commit",
     "accessibility",
     "wcag",

@@ -21,17 +21,19 @@ Read the repo's `CLAUDE.md` or `AGENTS.md`, and any skills under `.claude/skills
 
 ## 3. Review in parallel
 
-Run three subagents on the diff. Each scores every finding 0 to 100 for confidence.
+Run the plugin's reviewer agents on the diff in one message. Each scores every finding 0 to 100 for confidence.
 
 | Agent | Looks for |
 |-------|-----------|
-| **Correctness and security** | secrets in code, injection, auth gaps, null safety, off-by-one, async misuse, missing `CancellationToken`, edge cases that will happen |
-| **Performance and complexity** | queries in loops, unbounded scans, O(n²) on unbounded input, abstractions with one use, code that could be much shorter |
-| **Repo rules** | breaks of a rule in `CLAUDE.md`, `AGENTS.md` or a repo skill. Quote the rule. |
+| `code-reviewer` | secrets, injection, auth gaps, null safety, async misuse, queries in loops, unbounded scans, abstractions with one use, complexity no user behavior forces, missing tests, broken repo rules (quoted) |
+| `principle-reviewer` | each repo principle the change breaks (fix), leaves unsettled (log) or cannot undo (ask) |
+| `edge-case-reviewer` | only when the diff parses input, does IO, handles time or takes user input: hostile inputs, run for real |
+
+Without the plugin agents, run the same three checks as general subagents.
 
 Count only problems this diff introduces. Skip what a linter or formatter catches. Drop findings under 70. Merge duplicates.
 
-Keep **principle findings** apart: a finding that the change conflicts with a stated principle of the repo, not a rule. Report them for the maintainer to decide. Do not fix them.
+Keep **principle findings** apart. A break of a principle is a normal finding. A gap (no principle settles the choice) or a principle that seems wrong goes to the maintainer through `AGENT_DECISIONS.md`. It does not block the review.
 
 ## 4. Check before you claim
 
@@ -67,4 +69,4 @@ Direct and kind. Ask the question that exposes the tradeoff ("What happens at 10
 
 ## When you also fix
 
-If you act on the review, fix every Major, Minor and Nit in the same round, with the simplest fix. Leave principle findings to the maintainer. Reply to each thread with what changed, or why it was deferred.
+If you act on the review, fix every Major, Minor and Nit in the same round, with the simplest fix. Log principle gaps in `AGENT_DECISIONS.md` and keep going. Reply to each thread with what changed, or why it was deferred.

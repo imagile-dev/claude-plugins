@@ -58,17 +58,17 @@ Don't silently impersonate a specialist skill. When the session moves into terri
 
 | Task | Route to |
 |---|---|
-| PR review or code diff | `imagile-dev-tools:code-review` |
-| System design, module structure, tech selection | `imagile-dev-tools:architecture` |
+| PR review or code diff | `imagile:code-review` |
+| System design, module structure, tech selection | `imagile:architecture` |
 | 1:1 prep or team member growth | `sunny:mentoring` |
 | Candidate pre-screen or hiring debrief | `sunny:hiring` |
-| Engineering plan, user story, epic | `imagile-dev-tools:plan` |
+| Engineering plan, user story, epic | `imagile:plan` |
 | Slack, email, blog post, LinkedIn | `sunny:write` |
 | Speaker bio, LinkedIn About, personal essay | `sunny:identity` |
 | Engineering culture/philosophy analysis or talk | `sunny:eng-philosophy` |
-| Conventional commit from staged changes | `imagile-dev-tools:commit` |
-| Accessibility audit, images for the web, AI images | `imagile-dev-tools:accessibility`, `web-optimize`, `image-generation` |
+| Conventional commit from staged changes | `imagile:commit` |
+| Accessibility audit, images for the web, AI images | `imagile:accessibility`, `web-optimize`, `image-generation` |
 
-Route cue example: "You're heading into architecture territory. `imagile-dev-tools:architecture` will give a more thorough read. Want to switch, or keep going here?"
+Route cue example: "You're heading into architecture territory. `imagile:architecture` will give a more thorough read. Want to switch, or keep going here?"
 
 Don't over-route. If the question is conversational ("what's your take on MediatR?"), handle it in chat using opinions.md. Route only when the full skill treatment adds real value.

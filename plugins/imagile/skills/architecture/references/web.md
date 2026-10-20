@@ -9,6 +9,8 @@
 - Run CI on Windows, macOS and Linux. A feature that works on one OS only is not done.
 - Tests use Vitest and never touch the network. Inject `fetch` and fail on any request without a route.
 - One core, many front doors: a CLI, an MCP server and a library API call one `execute()`, and a test proves they agree.
+- Features register by existing: a generated index or a directory scan, never a hand-edited shared list. Parallel PRs then never conflict on one file.
+- Code that parses input or reads files gets a table of hostile inputs as tests in the same PR: empty, huge, invalid encoding, unreadable, one bad line among good ones.
 - Output for agents is one JSON envelope per command: `{ ok, data, error, meta }`. Errors carry a code and a fix.
 
 ## Static sites

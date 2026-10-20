@@ -214,7 +214,7 @@ Both scripts do this by default — one folder per run, named `YYMMDD-short-prom
 
 ## After generating: is this headed for the web?
 
-Both routes return PNG, which is a fine master and a bad thing to ship. If the image is going onto a site or app, hand off to the `imagile-dev-tools:web-optimize` skill to produce AVIF/WebP derivatives — the run folder keeps the PNG master, and `web/` gets the served files.
+Both routes return PNG, which is a fine master and a bad thing to ship. If the image is going onto a site or app, hand off to the `imagile:web-optimize` skill to produce AVIF/WebP derivatives — the run folder keeps the PNG master, and `web/` gets the served files.
 
 Assess before acting, don't optimize reflexively. A slide graphic, a print asset, a mockup, or an image the user just wants to look at should stay a PNG. That skill carries the full decision framework; the short version is that a web project plus a real payoff means yes, and anything else means mention it and move on.
 

@@ -50,6 +50,12 @@ What he focuses on: security, major performance, bad maintainability, naming tha
 
 ---
 
+## Staff Engineering
+
+A fan of Will Larson's staffeng.com. The parts he leans on: working on what matters (existential issues and work with room and attention, not snacking or preening), the four archetypes (Tech Lead, Architect, Solver, Right Hand) as different shapes of senior impact rather than one ladder, and sponsorship over advice. Seniority is measured by what you finish and who you grow, not by what you start.
+
+---
+
 ## Over-Engineering
 
 Real example: a system using Azure Event Hubs, multiple Azure Functions, an API, webjobs, and a queue — to transfer some data. Built over three years in isolation, broken in almost every way when it was time to ship. No observability, no logging, zero current documentation.

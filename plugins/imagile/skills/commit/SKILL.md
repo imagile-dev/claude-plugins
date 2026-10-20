@@ -10,12 +10,13 @@ description: Write a Conventional Commit for the staged changes and commit them.
 3. Write the message:
 
    ```
-   <type>(<optional scope>): <imperative summary, 72 chars max>
+   <type>(<optional scope>): <imperative summary> <gitmoji>
    ```
 
    - Types: `feat`, `fix`, `refactor`, `perf`, `docs`, `test`, `chore`, `ci`, `build`.
    - Title only. Add a body only when the reason is not obvious from the diff.
-   - No emoji, no jokes.
+   - End the title with one [gitmoji](https://gitmoji.dev/) that fits the change: `feat: add OAuth login 🔐`. The emoji goes last, never before the type, so release-please and other Conventional Commit parsers still read the type. 72 chars max including the emoji.
+   - No jokes.
    - A breaking change uses `feat!:` with a `BREAKING CHANGE:` footer that says why and how to migrate. Skip breaking markers before a project's first release.
    - Keep any trailer the environment requires (for example `Co-Authored-By`).
    - If the repo's `CLAUDE.md` defines another format, use that.

@@ -5,7 +5,7 @@ description: Design or review a system with Imagile's opinions on .NET, Blazor, 
 
 # Architecture
 
-Give an opinionated design or review, grounded in the stack below. Recommend one option. Do not survey every option.
+Give an opinionated design or review, grounded in the stack below. Recommend one option, and say what it optimizes for. Do not survey every option.
 
 ## 1. Understand the problem
 
@@ -20,6 +20,8 @@ For a review, read the design or code first. Then apply the rules.
 
 ## 2. The non-negotiables
 
+- **Radically obvious, and simple until users force a compromise.** Code and design a newcomer understands on the first read. Keep the simplest option until it would compromise what users experience: behavior, correctness or performance they feel. Hypothetical scale, future flexibility and taste never justify complexity.
+- **Name the trade-off.** Every recommendation says what it optimizes for and what it gives up.
 - **Modular monolith first.** Extract a service only when its load, its owner or its release cadence is independent. Late is right.
 - **No new infrastructure unless it is unavoidable.** Reuse the database, storage and hosts that exist. Ask before you add a resource.
 - **Serverless and static by default.** Small APIs go on Azure Functions with Table Storage or SQL. Sites go on GitHub Pages (Astro).
@@ -38,7 +40,7 @@ Read only the file the task needs:
 | File | Covers |
 |------|--------|
 | `references/dotnet.md` | Solution layout, EF Core and SQL, DTOs, DI, config, testing, CLI, seeding |
-| `references/azure.md` | Hosting choices, Bicep, resource naming and its 1 to 5 score, cost, CI/CD |
+| `references/azure.md` | Hosting choices, Bicep, Imagile resource naming and its 1 to 5 score, cost, CI/CD |
 | `references/web.md` | TypeScript and Node tools, Astro sites, front-end defaults |
 | `references/principles.md` | Module boundaries, cross-module calls, when to extract a service |
 
@@ -55,17 +57,25 @@ Use generic `Company.App.*` names in examples. Never use a real client name. Lin
 ### Recommendation
 [What to build, where it lives, how it is structured.]
 
+### Optimizing for
+[The one or two qualities this favors (obviousness, time to ship, user-felt latency, cost, operability), and what it gives up.]
+
 ### Structure
 [Projects, folders, key files.]
 
 ### Cost
 [Monthly run rate of anything new, or "no new resources".]
 
-### Alternatives
-1. [Option]: [why not, one line]
+### Trade-offs
+| Option | Gains | Costs | Forced by a user need? |
+|--------|-------|-------|------------------------|
+| [Recommended] | | | |
+| [Alternative] | | | |
 
 ### Ownership and independence
 [Who owns it. How it deploys and tests on its own.]
 ```
 
-For a review, replace **Recommendation** with **Assessment**, and add **Concerns** before **Alternatives**. For an Azure naming review, add the **Infra naming** block from `references/azure.md`.
+The recommended option is the simplest one whose costs users never feel. If a more complex option wins, name the user behavior that forces it.
+
+For a review, replace **Recommendation** with **Assessment**, and add **Concerns** before **Trade-offs**. For an Azure naming review, add the **Infra naming** block from `references/azure.md`.

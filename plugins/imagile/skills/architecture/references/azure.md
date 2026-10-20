@@ -28,20 +28,23 @@ Trial infrastructure is ephemeral. One script brings it up, tests it and tears i
 
 ## Naming
 
-Use the [Cloud Adoption Framework abbreviations](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations), type first:
+Imagile's deployed resources set the convention. The name reads like the product first, not the Azure catalog.
 
 ```
-<type>-<app>-<env>[-<role>]       rg-shop-prod, func-shop-prod, appi-shop-prod, kv-shop-prod
-<type><app><env>                  stshopprod  (no hyphens allowed)
-<type>-<app>-shared-<role>        log-shop-shared, id-shop-shared-deploy
+<app>-<env>-<role>          imagile-prod-api, imagile-prod-functions, imagile-prod-key-vault
+<app>-<env>                 imagile-prod  (resource group)
+<app><env><role>            imagileprodstorage  (no hyphens allowed)
+<app>-<role>                imagile-keyvault  (shared organization resource)
+<app>-shared-<role>         imagile-shared-law
 ```
 
-Common types: `rg`, `func`, `app`, `ca`, `cae`, `sql`, `sqldb`, `st`, `kv`, `appi`, `log`, `id`, `apim`, `evgt`, `sbq`.
+Roles: `api`, `functions`, `ui`, `sql`, `signalr`, `key-vault`, `identity`, `dashboard`, `cae`, `storage`, `ai` (Application Insights), `law` (Log Analytics).
 
+- Child resources keep the parent prefix: `imagile-prod-sql/imagile-prod-metabase`, `imagile-prod-api-health`.
 - Environments are `dev`, `qa`, `prod`.
-- One Function App per app and environment, many functions inside it.
-- When a name needs global uniqueness, add the suffix at the end.
-- A repo that already uses another pattern keeps it. Do not mix two patterns in one repo.
+- One Function App per app and environment (`<app>-<env>-functions`), many functions inside it.
+- When a name needs global uniqueness, keep the convention as far left as possible and add the suffix at the end.
+- No CAF type prefixes (`func-`, `rg-`, `st`, `kv`, `appi`) unless the repo already uses them consistently. Do not mix two patterns in one repo.
 
 For a naming review, add:
 
@@ -58,11 +61,11 @@ Recommended names:
 
 | Score | Meaning |
 |-------|---------|
-| 5 | CAF type, app, environment and role, in that order, for every resource |
-| 4 | One reasoned deviation for uniqueness, DNS or an Azure limit |
-| 3 | Clear but inconsistent: order or abbreviations drift |
-| 2 | Two patterns mixed in one repo |
-| 1 | Missing app, environment or role (`backend`, `function1`) |
+| 5 | `<app>-<env>-<role>` with the role vocabulary above, Azure limits handled without changing the order (`imagileprodstorage`) |
+| 4 | One reasoned deviation for uniqueness, DNS or an Azure limit (`imagile-prod-functions-health`) |
+| 3 | Clear, but order or vocabulary drifts (`prod-imagile-functions`, `imagile-prod-func`). Fine for legacy, not for new Bicep |
+| 2 | Type-first CAF prefixes with no repo reason (`func-imagile-prod`, `rg-imagile-prod`), or two patterns mixed |
+| 1 | Missing app, environment or role (`backend`, `function1`, `centralus-prod-app`) |
 
 ## CI/CD
 

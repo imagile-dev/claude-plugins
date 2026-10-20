@@ -10,15 +10,17 @@ A repo's own `CLAUDE.md` overrides these.
 
 - **Issue first.** Every major item starts with a short GitHub issue: what and why, plus one "Done when" line. Follow-ups become issues, never TODOs. "Later" means the `deferred` label.
 - **Branches:** `kolatts/<issue#>-short-desc`. Jira-tracked repos use `<user>/<JIRA-key>-short-desc`.
-- **Commits:** Conventional Commits, short imperative title, no gitmoji, no body unless the reason is not obvious. Example: `feat: add OAuth login`.
+- **Commits:** Conventional Commits, short imperative title, one gitmoji at the end, no body unless the reason is not obvious. Example: `feat: add OAuth login 🔐`. The emoji goes last so release-please still parses the type.
 - **PRs are large vertical slices** (data, API, UI, tests for one capability), fully verified before they open, with proof in the description: gate results, real runs, screenshots at desktop and 375px, and what was not verified.
-- **Agents push and fix; humans merge.** Fix every review finding in the round it arrives. Never merge, enable auto-merge or force-push unless Sunny says so for that repo.
+- **Agents decide, ship and fix.** In a repo whose `CLAUDE.md` has an Autonomy section, agents commit, push and open PRs through the `ship` skill without asking. Fix every review finding in the round it arrives. An approving review from the review bot arms auto-merge. Rebase your own branch onto the target before shipping; push it with `--force-with-lease`, never a plain force-push, and never force-push `main`.
 - **Commit only when asked**, or at a slice boundary for review. Read `git status` first and leave out stray files.
-- **Defaults an agent picks** go in the repo's `AGENT_DECISIONS.md` (what, why, where).
+- **Defaults an agent picks** go in the repo's `AGENT_DECISIONS.md` with what they optimize for and what they give up. Sunny reviews them in batches with the `revisit` skill. Ask only when a choice cannot be undone.
+- **Radically obvious, simple until users force a compromise.** Architecture answers name what they optimize for and the trade-offs.
 - **Azure cost is a gate.** State the monthly cost before creating anything, and tear down trial infrastructure in the same piece of work.
 
 ## Self-Correction Rules
 
+- **Find the principle under a correction.** In a repo with principles, sharpen the principle and every rule that follows from it (the `principles` skill), not only the one instance.
 - **Skills are self-healing.** If a skill encounters an issue (wrong output, bad assumptions, broken flow), fix the skill file immediately after resolving it — don't just patch the current response and move on.
 - **CLAUDE.md is a living document.** Every correction the user makes that reveals a pattern (preference, workflow, constraint) should be captured here or in the relevant skill. Don't wait to be asked.
 - **This applies to both repo-scoped and user-scoped skills.** If the fix belongs in `~/.claude/`, update it there. If it belongs in the plugin, update it there.

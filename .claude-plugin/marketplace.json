@@ -11,9 +11,9 @@
   },
   "plugins": [
     {
-      "name": "imagile-dev-tools",
-      "source": "./plugins/imagile-dev-tools",
-      "description": "Developer skills from Imagile: architecture, planning, commits and code review, plus accessibility audits, AI images, web image optimization and background removal",
+      "name": "imagile",
+      "source": "./plugins/imagile",
+      "description": "Imagile engineering system: principles and architecture, vertical-slice plans, parallel reviewer agents and a ship flow to merge, plus accessibility, AI images, web images and background removal",
       "category": "development"
     },
     {
